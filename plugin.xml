@@ -3,7 +3,7 @@
         id="enterprises.nucleus.plugin.msp_bt"
         version="0.0.1">
 
-  <name>Hello</name>
+  <name>Msp_bt</name>
 
   <engines>
     <engine name="cordova" version=">=3.4.0"/>
@@ -18,12 +18,12 @@
   <platform name="android">
 
     <config-file target="res/xml/config.xml" parent="/*">
-      <feature name="msp_bt">
-        <param name="android-package" value="enterprises.nucleus.plugin.msp_bt"/>
+      <feature name="Msp_bt">
+        <param name="android-package" value="enterprises.nucleus.plugin.Msp_bt"/>
       </feature>
     </config-file>
 
-    <source-file src="src/android/msp_bt.java" target-dir="src/com/example/plugin/"/>
+    <source-file src="src/android/Msp_bt.java" target-dir="src/enterprises/nucleus/plugin/"/>
   </platform>
 
 </plugin>
