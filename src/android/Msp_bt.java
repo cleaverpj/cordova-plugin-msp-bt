@@ -18,7 +18,7 @@ public class Msp_bt extends CordovaPlugin {
             return true;
 
         } else if (action.equals("connect")) {
-            Log.d("connect");
+            Log.d("connect","connect");
             String name = data.getString(0);
             String message = "Connect to " + name;
             callbackContext.success(message);
