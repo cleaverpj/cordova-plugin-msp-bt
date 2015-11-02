@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
-        id="enterprises.nucleus.plugin.msp_bt"
+        id="enterprises.nucleus.msp_bt"
         version="0.0.1">
 
   <name>Msp_bt</name>
