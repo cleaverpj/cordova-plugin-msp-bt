@@ -1,5 +1,6 @@
 package enterprises.nucleus.plugin;
 
+import android.util.Log;
 import org.apache.cordova.*;
 import org.json.JSONArray;
 import org.json.JSONException;
