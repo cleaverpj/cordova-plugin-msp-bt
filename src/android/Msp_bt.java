@@ -11,13 +11,11 @@ import enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI;
 
 public class Msp_bt extends CordovaPlugin {
 
+	private static final int refreshRate = 100;
 	private static Handler mHandler;
+	private static boolean killme;
 
 	public static EZGUI multiWiiDevice;
-	private static boolean killme;
-	
-	private static final int refreshRate = 100;
-
 	
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
@@ -41,8 +39,6 @@ public class Msp_bt extends CordovaPlugin {
 			
 			mHandler = new Handler();
 			mHandler.postDelayed(update, refreshRate);
-//			ezgui.commMW.connect(deviceId, (int)0); 
-//			ezgui.init(); 
             callbackContext.success(message);
 
             return true;
@@ -64,21 +60,27 @@ public class Msp_bt extends CordovaPlugin {
 
             return true;
 
+        } else if (action.equals("getData")) {
+            Log.i("msp_bt","sendMessage");
+            int msgCode = Integer.parseInt(data.getString(0));
+			if (msgCode == 102) {
+				JSONObject json = new JSONObject();
+				json.put("acc_x", multiWiiDevice.mw.accelerometer_x);
+				callbackContext.success(json);
+			}
+
+            return true;
+
         } else 
             
             return false;
-
     }
 	
-		    private static Runnable update = new Runnable() {
+	private static Runnable update = new Runnable() {
         @Override
         public void run() {
 
             multiWiiDevice.mw.ProcessSerialData(multiWiiDevice.loggingON);
-
-//            multiWiiDevice.frskyProtocol.ProcessSerialData(false);
-//            if (multiWiiDevice.commFrsky.Connected)
-//                setSupportProgress((int) Functions.map(multiWiiDevice.frskyProtocol.TxRSSI, 0, 110, 0, 10000));
 
             String t = new String();
             if (multiWiiDevice.mw.BaroPresent == 1)
@@ -114,17 +116,6 @@ public class Msp_bt extends CordovaPlugin {
                 t1 += "armedCount" + ":" + String.valueOf(multiWiiDevice.mw.ArmCount) + "  " + "liveTime" + ":" + timeString;
             }
 
-//            if (multiWiiDevice.commMW.Connected)
-//                MainActivity.multiWiiDeviceendTvConsole(t1);
-            //  else
-            // MainActivity.multiWiiDeviceendTvConsole(_context.getString(R.string.Disconnected));
-
-//            if (!multiWiiDevice.mw.multi_Capability.Nav) {
-//                ((Button) adapter.views.get(0).findViewById(R.id.ButtonNavigation)).setVisibility(View.GONE);
-//            } else {
-//                ((Button) adapter.views.get(0).findViewById(R.id.ButtonNavigation)).setVisibility(View.VISIBLE);
-//            }
-
             multiWiiDevice.Frequentjobs();
             multiWiiDevice.mw.SendRequest(multiWiiDevice.MainRequestMethod);
 			
@@ -134,8 +125,5 @@ public class Msp_bt extends CordovaPlugin {
             if (multiWiiDevice.D)
                 Log.d(multiWiiDevice.TAG, "loop " + this.getClass().getName());
         }
-
     };
-	
-	
 }
