@@ -152,7 +152,7 @@ public class BT extends Communication {
 	private void GetRemoteDevice(String address) {
 		if (D) {
 			Log.d("BT", "+ ON RESUME +");
-			Log.d("BT", "+ ABOUT TO ATTEMPT CLIENT CONNECT +");
+			Log.d("BT", "ATTEMPT CLIENT CONNECT to " + address);
 		}
 
 		BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
@@ -161,7 +161,7 @@ public class BT extends Communication {
 			btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
 
 		} catch (IOException e) {
-			Log.e("BT", "ON RESUME: Socket creation failed.", e);
+			Log.e("BT", "GetRemoteDevice: Socket creation failed.", e);
 //			Toast.makeText(context, context.getString(R.string.Unabletoconnect), Toast.LENGTH_LONG).show();
 		}
 
@@ -174,7 +174,7 @@ public class BT extends Communication {
 			try {
 				outStream.flush();
 			} catch (IOException e) {
-				Log.e("BT", "ON PAUSE: Couldn't flush output stream.", e);
+				Log.e("BT", "CloseSocket: Couldn't flush output stream.", e);
 				Toast.makeText(context, "Unable to close socket", Toast.LENGTH_LONG).show();
 			}
 		}
@@ -187,7 +187,7 @@ public class BT extends Communication {
 //			Toast.makeText(context, context.getString(R.string.Disconnected), Toast.LENGTH_LONG).show();
 
 		} catch (Exception e2) {
-			Log.e("BT", "ON PAUSE: Unable to close socket.", e2);
+			Log.e("BT", "CloseSocket: Unable to close socket.", e2);
 //			Toast.makeText(context, "Unable to close socket", Toast.LENGTH_LONG).show();
 		}
 
