@@ -68,7 +68,7 @@ public class Msp_bt extends CordovaPlugin {
 				JSONObject json = new JSONObject();
 				json.put("acc_x", multiWiiDevice.mw.attitude_x);
 //				callbackContext.success(json);
-				callbackContext.success(multiWiiDevice.mw.attitude_x);
+				callbackContext.success(Float.toString(multiWiiDevice.mw.attitude_x));
 			}
 
             return true;
