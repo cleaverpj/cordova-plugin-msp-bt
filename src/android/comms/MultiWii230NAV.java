@@ -281,13 +281,13 @@ public class MultiWii230NAV extends MultirotorData {
             this.accelerometer_y = ay;
             this.accelerometer_z = az;
 
-            App.deviceStateRef.child("imu").child("gyro_x").setValue(gx);
-            App.deviceStateRef.child("imu").child("gyro_y").setValue(gy);
-            App.deviceStateRef.child("imu").child("gyro_z").setValue(gz);
+            // App.deviceStateRef.child("imu").child("gyro_x").setValue(gx);
+            // App.deviceStateRef.child("imu").child("gyro_y").setValue(gy);
+            // App.deviceStateRef.child("imu").child("gyro_z").setValue(gz);
 
-            App.deviceStateRef.child("imu").child("magnetometer_x").setValue(magx);
-            App.deviceStateRef.child("imu").child("magnetometer_y").setValue(magy);
-            App.deviceStateRef.child("imu").child("magnetometer_z").setValue(magz);
+            // App.deviceStateRef.child("imu").child("magnetometer_x").setValue(magx);
+            // App.deviceStateRef.child("imu").child("magnetometer_y").setValue(magy);
+            // App.deviceStateRef.child("imu").child("magnetometer_z").setValue(magz);
 
 
             break;
