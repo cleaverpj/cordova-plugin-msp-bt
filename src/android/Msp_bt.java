@@ -67,7 +67,8 @@ public class Msp_bt extends CordovaPlugin {
 				Log.i("msg_back", "acc_x" + multiWiiDevice.mw.attitude_x);
 				JSONObject json = new JSONObject();
 				json.put("acc_x", multiWiiDevice.mw.attitude_x);
-				callbackContext.success(json);
+//				callbackContext.success(json);
+				callbackContext.success(multiWiiDevice.mw.attitude_x);
 			}
 
             return true;
