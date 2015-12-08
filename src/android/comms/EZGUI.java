@@ -50,7 +50,7 @@ public class EZGUI{
 
 	public Communication commMW;
 	public Communication commFrsky;
-	public MultirotorData mw;
+	public static MultirotorData mw;
 //	public Sensors sensors;
 
 	public boolean FollowMeEnable = false;
