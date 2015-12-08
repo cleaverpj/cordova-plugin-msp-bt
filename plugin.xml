@@ -31,7 +31,7 @@
     <source-file src="src/android/comms/BT.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
     <source-file src="src/android/comms/BT_New.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
     <source-file src="src/android/comms/Communication.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
-    <!-- <source-file src="src/android/comms/EZGUI.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/> -->
+    <source-file src="src/android/comms/EZGUI.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
     <source-file src="src/android/comms/MultiCapability.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
     <source-file src="src/android/comms/MultirotorData.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
     <source-file src="src/android/comms/MultiWii230NAV.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>

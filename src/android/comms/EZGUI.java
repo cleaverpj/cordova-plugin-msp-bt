@@ -40,7 +40,7 @@ import enterprises.nucleus.plugins.multiwii_bluetooth.R;
 //import fish.action.thingsocket.comms.ezgui.SerialCDC_ACM;
 //import communication.SerialFTDI;
 
-public class EZGUI extends Application {
+public class EZGUI{
 
     public static final int PROTOCOL_220 = 220;
     public static final int PROTOCOL_230 = 230;
