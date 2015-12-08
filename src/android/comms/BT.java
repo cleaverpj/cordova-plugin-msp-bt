@@ -53,25 +53,21 @@ public class BT extends Communication {
 
 	@Override
 	public void Connect(String address, int speed) {
-//		MainActivity.appendTvConsole("Connecting");
-		Log.d("BT", "Connecting");
 		if (mBluetoothAdapter.isEnabled()) {
+			Log.d("BT", "Connecting");
 			try {
 				GetRemoteDevice(address);
 				btSocket.connect();
 				Connected = true;
 
 				Log.d("BT", "BT connection established, data transfer link open.");
- //               MainActivity.appendTvConsole("BT connection established, data transfer link open.");
 			} catch (IOException e) {
 				try {
+					Log.e("BT", "IO Exception " + e);
 					btSocket.close();
 					Connected = false;
-
- //                   MainActivity.appendTvConsole("Unabletoconnect");
 				} catch (IOException e2) {
-					Log.e("BT", "ON RESUME: Unable to close socket during connection failure", e2);
-  //                  MainActivity.appendTvConsole("Connection failure");
+					Log.e("BT", "Unable to close socket during connection failure", e2);
 				}
 			}
 
@@ -86,10 +82,11 @@ public class BT extends Communication {
 
 			} catch (IOException e) {
 				Log.e("BT", "ON RESUME: Output stream creation failed.", e);
-  //              MainActivity.appendTvConsole("Stream creation failed");
 			}
+		} else {
+			Log.e("BT", "Adapter not enabled");
 		}
-
+		Log.d("BT", "Finished Connecting");
 	}
 
 	@Override
