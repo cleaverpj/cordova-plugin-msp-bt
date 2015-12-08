@@ -25,6 +25,8 @@ import java.util.Date;
 
 public abstract class MultirotorData {
 
+	public float accelerometer_x;
+
 	/******************************* Multiwii Serial Protocol **********************/
 	final String MSP_HEADER = "$M<";
 

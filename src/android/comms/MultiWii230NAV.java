@@ -276,10 +276,10 @@ public class MultiWii230NAV extends MultirotorData {
 			magz = read16() / 3;
    //         App.wsServer.sendToAll("{\"id\":" + MSP_RAW_IMU + ",\"ax\":" + ax + ",\"ay\":" + ay + ",\"az\":" + az + ",\"gx\":" + gx + ",\"gy\":" + gy + ",\"gz\":" + gz + ",\"magx\":" + magx + ",\"magy\":" + magy + ",\"magz\":" + magz + "}");
 
-/*
-            App.deviceStateRef.child("imu").child("accelerometer_x").setValue(ax);
-            App.deviceStateRef.child("imu").child("accelerometer_y").setValue(ay);
-            App.deviceStateRef.child("imu").child("accelerometer_z").setValue(az);
+
+            this.status.accelerometer_x = ax;
+            this.status.accelerometer_y = ay;
+            this.status.accelerometer_z = az;
 
             App.deviceStateRef.child("imu").child("gyro_x").setValue(gx);
             App.deviceStateRef.child("imu").child("gyro_y").setValue(gy);
@@ -288,7 +288,7 @@ public class MultiWii230NAV extends MultirotorData {
             App.deviceStateRef.child("imu").child("magnetometer_x").setValue(magx);
             App.deviceStateRef.child("imu").child("magnetometer_y").setValue(magy);
             App.deviceStateRef.child("imu").child("magnetometer_z").setValue(magz);
-*/
+
 
             break;
 
