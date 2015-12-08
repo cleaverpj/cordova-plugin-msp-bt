@@ -28,7 +28,8 @@ public class Msp_bt extends CordovaPlugin {
             Log.i("connect","connect");
             String deviceId = data.getString(0);
             String message = "Connect to " + deviceId;
-			EZGUI ezgui = new EZGUI();
+			enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI ezgui = new enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI();
+			ezgui.init();
             callbackContext.success(message);
 
             return true;
