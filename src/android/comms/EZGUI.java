@@ -436,7 +436,8 @@ public class EZGUI{
 //						s = getString(R.string.isON);
 //						soundManager.playSound(2);
 					} else {
-						s = getString(R.string.isOFF);
+						s = "is off";
+//						s = getString(R.string.isOFF);
 					}
 
 					Say((mw.BoxNames[i] + s).toLowerCase(Locale.ENGLISH));
@@ -499,7 +500,8 @@ public class EZGUI{
 
 			if (mw.version > 0) {
 				if (mw.version > Protocol) {
-					t += _context.getString(R.string.SelectDifferentProtocol);
+					t += "Select Different Protocol";
+//					t += _context.getString(R.string.SelectDifferentProtocol);
 
 				}
 			}
@@ -513,7 +515,8 @@ public class EZGUI{
 //			if (sensors.MockLocationWorking)
 //				t += getString(R.string.MockLocationIsWorking) + ";";
 			if (FollowMeEnable)
-				t += _context.getString(R.string.Follow_Me) + ";";
+				t += "Follow Me;";
+//				t += _context.getString(R.string.Follow_Me) + ";";
 			if (FollowHeading)
 				t += "Follow Heading";
 
@@ -537,7 +540,7 @@ public class EZGUI{
 			Locale.setDefault(locale);
 			Configuration config = new Configuration();
 			config.locale = locale;
-			getBaseContext().getResources().updateConfiguration(config, null);
+			//getBaseContext().getResources().updateConfiguration(config, null);
 		}
 	}
 
@@ -594,7 +597,7 @@ public class EZGUI{
 			Log.d("aaa", "OpenInfoOnClick " + v.getTag().toString());
 			final Intent intent = new Intent(Intent.ACTION_VIEW).setData(Uri.parse(v.getTag().toString()));
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			startActivity(intent);
+			//startActivity(intent);
 		}
 	}
 
