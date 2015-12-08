@@ -203,13 +203,15 @@ public class EZGUI{
 
 	private int tempLastI2CErrorCount = 0;
 
+	private Context _context;
 	public boolean ConfigHasBeenChange_DisplayRestartInfo = false;
 
 //	@Override
 //	public void onCreate() {
 
-    public EZGUI (Context _context) {
+    public EZGUI (Context _c) {
 		Log.d("aaa", "APP ON CREATE");
+		_context = _c;
 //		super.onCreate();
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(_context);
