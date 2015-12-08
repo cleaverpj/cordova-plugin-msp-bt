@@ -16,7 +16,7 @@ public class Msp_bt extends CordovaPlugin {
 	public static EZGUI multiWiiDevice;
 	private static boolean killme;
 	
-	private static final refreshRate = 100;
+	private static final int refreshRate = 100;
 
 	
     @Override
