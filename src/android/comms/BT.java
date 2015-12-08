@@ -82,6 +82,7 @@ public class BT extends Communication {
 			try {
 				outStream = btSocket.getOutputStream();
 				inStream = btSocket.getInputStream();
+				Log.d("BT", "created streams successfully");
 
 			} catch (IOException e) {
 				Log.e("BT", "ON RESUME: Output stream creation failed.", e);
