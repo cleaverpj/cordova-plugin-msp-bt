@@ -62,7 +62,7 @@ public class Msp_bt extends CordovaPlugin {
 
         } else if (action.equals("getData")) {
             Log.i("msp_bt","sendMessage");
-            int msgCode = Integer.parseInt(data.getString(0));
+            int msgCode = Integer.parseInt(args.getString(0));
 			if (msgCode == 108) { //attitude
 				Log.i("msg_back", "acc_x" + multiWiiDevice.mw.attitude_x);
 				JSONObject json = new JSONObject();
