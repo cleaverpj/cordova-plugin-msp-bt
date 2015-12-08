@@ -121,8 +121,9 @@ public class Msp_bt extends CordovaPlugin {
 
             multiWiiDevice.Frequentjobs();
             multiWiiDevice.mw.SendRequest(multiWiiDevice.MainRequestMethod);
-            if (!killme)
-                App.mHandler.postDelayed(update, multiWiiDevice.RefreshRate);
+			
+//            if (!killme)
+  //              App.mHandler.postDelayed(update, multiWiiDevice.RefreshRate);
 
             if (multiWiiDevice.D)
                 Log.d(multiWiiDevice.TAG, "loop " + this.getClass().getName());
