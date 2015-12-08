@@ -52,9 +52,9 @@ public class BT extends Communication {
 	}
 
 	@Override
-	public void Connect(String address, int speed) {
+	public void Connect(String address) {
 //		MainActivity.appendTvConsole("Connecting");
-Log.d("BT", "BT connection established, data transfer link open.");
+		Log.d("BT", "Connecting");
 		if (mBluetoothAdapter.isEnabled()) {
 			try {
 				GetRemoteDevice(address);

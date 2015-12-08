@@ -33,13 +33,6 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-//import enterprises.nucleus.plugins.multiwii_bluetooth.App;
-//import enterprises.nucleus.plugins.multiwii_bluetooth.R;
-
-//import com.ezio.sec.Sec;
-//import fish.action.thingsocket.comms.ezgui.SerialCDC_ACM;
-//import communication.SerialFTDI;
-
 public class EZGUI{
 
     public static final int PROTOCOL_220 = 220;
@@ -70,10 +63,8 @@ public class EZGUI{
 
 	private SharedPreferences prefs;
 	private Editor editor;
-//	public TTS tts;
-//	public SoundManager soundManager;
-//	public VarioSoundClass varioSoundClass;
 
+	
 	// variables used in FrequentJobs
 	private boolean[] oldActiveModes;
 	private long timer1 = 0; // Say battery level every xx seconds;
@@ -145,9 +136,6 @@ public class EZGUI{
 	private static final String VOLTAGEALARM = "VOLTAGEALARM";
 	public float VoltageAlarm = 0;
 
-	// private static final String USEOFFLINEMAPS = "USEOFFLINEMAPS";
-	// public boolean UseOfflineMaps = false;
-
 	private static final String APPSTARTCOUNTER = "APPSTARTCOUNTER";
 	public int AppStartCounter = 0;
 
@@ -197,43 +185,18 @@ public class EZGUI{
 
 	private final static String GRAPHSTOSHOW = "GRAPHSTOSHOW";
 	public String GraphsToShow = ACCROLL + ";" + ACCZ + ";" + ALT + ";" + GYROPITCH;
-
-	// graphs end
-
-//	public Notifications notifications;
-
 	private int tempLastI2CErrorCount = 0;
 
 	private Context _context;
 	public boolean ConfigHasBeenChange_DisplayRestartInfo = false;
 
-//	@Override
-//	public void onCreate() {
-
     public EZGUI (Context _c) {
 		Log.d("aaa", "APP ON CREATE");
 		_context = _c;
-//		super.onCreate();
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(_context);
 		editor = prefs.edit();
 		Init();
-
-//		tts = new TTS(_context);
-
-//		prepareSounds();
-
-//		Say(getString(R.string.Started));
-
-//		soundManager.playSound(2);
-
-//		notifications = new Notifications(_context);
-
-//		sensors = new Sensors(_context);
-//		sensors.registerListener(this);
-//		sensors.start();
-
-//		varioSoundClass = new VarioSoundClass();
 	}
 
 	public void Init() {
@@ -249,34 +212,7 @@ public class EZGUI{
 			commMW = new BT_New(_context);
 			CommunicationTypeFrSky = COMMUNICATION_TYPE_BT_NEW;
 		}
-
-//		if (CommunicationTypeMW == COMMUNICATION_TYPE_SERIAL_FTDI) {
-//			commMW = new SerialFTDI(_context);
-//		}
-//
-//		if (CommunicationTypeMW == COMMUNICATION_TYPE_SERIAL_OTHERCHIPS) {
-//			commMW = new SerialCDC_ACM(_context);
-//		}
-		// ////////////
-
-//		if (CommunicationTypeFrSky == COMMUNICATION_TYPE_BT) {
-//			commFrsky = new BT(_context);
-//		}
-//
-//		if (CommunicationTypeFrSky == COMMUNICATION_TYPE_BT_NEW) {
-//			commFrsky = new BT_New(_context);
-//		}
-
-		// if (CommunicationTypeFrSky == COMMUNICATION_TYPE_SERIAL_FTDI) {
-		// commFrsky = new SerialFTDI(_context);
-		// }
-		//
-		// if (CommunicationTypeFrSky == COMMUNICATION_TYPE_SERIAL_OTHERCHIPS) {
-		// commFrsky = new SerialCDC_ACM(_context);
-		// }
-
 		SelectProtocol();
-
 	}
 
 	public void SelectProtocol() {
@@ -305,9 +241,8 @@ public class EZGUI{
         Protocol = prefs.getInt(PROTOCOL, 231);
 //        Protocol = prefs.getInt(PROTOCOL, 230);
 		MagMode = prefs.getInt(MAGMODE, 1);
-		TextToSpeach = prefs.getBoolean(TEXTTOSPEACH, true);
+		TextToSpeach = prefs.getBoolean(TEXTTOSPEACH, false);
         MacAddress = "10:14:07:03:27:85";
-//        MacAddress = prefs.getString(MACADDERSS, "10:14:07:03:27:85");
 		MacAddressFrsky = prefs.getString(MACADDERSSFRSKY, "");
 		ConnectOnStart = prefs.getBoolean(CONNECTONSTART, false);
 		// AdvancedFunctions = prefs.getBoolean(ADVANCEDFINCTIONS, false);
