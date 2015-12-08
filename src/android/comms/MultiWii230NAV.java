@@ -266,6 +266,8 @@ public class MultiWii230NAV extends MultirotorData {
 			magz = read16() / 3;
    //         App.wsServer.sendToAll("{\"id\":" + MSP_RAW_IMU + ",\"ax\":" + ax + ",\"ay\":" + ay + ",\"az\":" + az + ",\"gx\":" + gx + ",\"gy\":" + gy + ",\"gz\":" + gz + ",\"magx\":" + magx + ",\"magy\":" + magy + ",\"magz\":" + magz + "}");
 
+			
+			Log.i("msg_back", "setting this.accelerometer_x" + this.accelerometer_x);
 
             this.accelerometer_x = ax;
             this.accelerometer_y = ay;
