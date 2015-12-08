@@ -129,7 +129,7 @@ public class Msp_bt extends CordovaPlugin {
             multiWiiDevice.mw.SendRequest(multiWiiDevice.MainRequestMethod);
 			
             if (!killme)
-                app.mHandler.postDelayed(update, multiWiiDevice.RefreshRate);
+                mHandler.postDelayed(update, refreshRate);
 
             if (multiWiiDevice.D)
                 Log.d(multiWiiDevice.TAG, "loop " + this.getClass().getName());
