@@ -304,17 +304,6 @@ public class EZGUI{
 		}
 	}
 
-//	@Override
-//	public void onTerminate() {
-//		sensors.stop();
-//		mw.CloseLoggingFile();
-//		super.onTerminate();
-//	}
-
-	public void Say(String text) {
-//		if (TextToSpeach)
-//			tts.Speak(text);
-	}
 
 	public void Frequentjobs() {
 
@@ -361,6 +350,9 @@ public class EZGUI{
 
 			// Checkboxes speaking; ON OFF
 			for (int i = 0; i < mw.CHECKBOXITEMS; i++) {
+				Log.i("ezgui", "checkbox:" + i);
+				Log.i("ezgui", "mw.ActiveModes[i]:" + mw.ActiveModes[i]);
+				Log.i("ezgui", "mw.oldActiveModes[i]:" + mw.oldActiveModes[i]);
 				if (mw.ActiveModes[i] != oldActiveModes[i]) {
 					String s = "";
 					if (mw.ActiveModes[i]) {
@@ -371,8 +363,6 @@ public class EZGUI{
 						s = "is off";
 //						s = getString(R.string.isOFF);
 					}
-
-					Say((mw.BoxNames[i] + s).toLowerCase(Locale.ENGLISH));
 
 					if (mw.BoxNames[i].equals("ARM")) {
       //                  MainActivity.appendTvConsole("*** ARMING MOTORS ***");
