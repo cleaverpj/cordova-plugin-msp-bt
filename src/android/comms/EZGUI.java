@@ -33,8 +33,8 @@ import android.widget.Toast;
 
 import java.util.Locale;
 
-import enterprises.nucleus.plugins.multiwii_bluetooth.App;
-import enterprises.nucleus.plugins.multiwii_bluetooth.R;
+//import enterprises.nucleus.plugins.multiwii_bluetooth.App;
+//import enterprises.nucleus.plugins.multiwii_bluetooth.R;
 
 //import com.ezio.sec.Sec;
 //import fish.action.thingsocket.comms.ezgui.SerialCDC_ACM;
