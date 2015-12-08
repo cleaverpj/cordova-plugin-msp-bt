@@ -145,7 +145,7 @@ public class MultiWii230NAV extends MultirotorData {
 		for (byte b : msp) {
 			arr[i++] = b;
 		}
-		Log.d("mw-request", "communication:" + communication);
+
 		communication.Write(arr); // send the complete byte sequence in one go
 	}
 

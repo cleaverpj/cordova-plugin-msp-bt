@@ -121,12 +121,12 @@ public class BT extends Communication {
 
 	@Override
 	public void Write(byte[] arr) {
-		Log.d("bt", "sending:" + String.valueOf(arr));
+//		Log.d("bt", "sending:" + String.valueOf(arr));
 		super.Write(arr);
 		try {
 			if (Connected) {
 				outStream.write(arr);
-				Log.d("bt", "sent:" + String.valueOf(arr));
+//				Log.d("bt", "sent:" + String.valueOf(arr));
 			}
 		} catch (IOException e) {
 			Log.e("BT", "SEND : Exception during write.", e);
