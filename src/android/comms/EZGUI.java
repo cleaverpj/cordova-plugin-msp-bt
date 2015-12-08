@@ -432,7 +432,8 @@ public class EZGUI{
 				if (mw.ActiveModes[i] != oldActiveModes[i]) {
 					String s = "";
 					if (mw.ActiveModes[i]) {
-						s = getString(R.string.isON);
+						s = "is on";
+//						s = getString(R.string.isON);
 //						soundManager.playSound(2);
 					} else {
 						s = getString(R.string.isOFF);
