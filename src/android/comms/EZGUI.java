@@ -208,11 +208,11 @@ public class EZGUI{
 //	@Override
 //	public void onCreate() {
 
-    public EZGUI () {
+    public EZGUI (Context _context) {
 		Log.d("aaa", "APP ON CREATE");
 //		super.onCreate();
 
-		prefs = PreferenceManager.getDefaultSharedPreferences(cordova.getApplicationContext());
+		prefs = PreferenceManager.getDefaultSharedPreferences(_context);
 		editor = prefs.edit();
 		Init();
 
@@ -238,7 +238,7 @@ public class EZGUI{
 		ForceLanguage();
 
 		if (CommunicationTypeMW == COMMUNICATION_TYPE_BT) {
-			commMW = new BT(cordova.getApplicationContext());
+			commMW = new BT(_context);
 			CommunicationTypeFrSky = COMMUNICATION_TYPE_BT;
 		}
 
@@ -364,7 +364,7 @@ public class EZGUI{
 		editor.commit();
 
 		if (!quiet) {
-     //       MainActivity.appendTvConsole(cordova.getApplicationContext().getString(R.string.Settingssaved));
+     //       MainActivity.appendTvConsole(_context.getString(R.string.Settingssaved));
 //            Toast.makeText(getApplicationContext(), getString(R.string.Settingssaved), Toast.LENGTH_LONG).show();
 			// Say(getString(R.string.Settingssaved));
 		}
@@ -497,7 +497,7 @@ public class EZGUI{
 
 			if (mw.version > 0) {
 				if (mw.version > Protocol) {
-					t += cordova.getApplicationContext().getString(R.string.SelectDifferentProtocol);
+					t += _context.getString(R.string.SelectDifferentProtocol);
 
 				}
 			}
@@ -511,7 +511,7 @@ public class EZGUI{
 //			if (sensors.MockLocationWorking)
 //				t += getString(R.string.MockLocationIsWorking) + ";";
 			if (FollowMeEnable)
-				t += cordova.getApplicationContext().getString(R.string.Follow_Me) + ";";
+				t += _context.getString(R.string.Follow_Me) + ";";
 			if (FollowHeading)
 				t += "Follow Heading";
 
