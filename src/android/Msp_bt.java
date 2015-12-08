@@ -10,13 +10,13 @@ import enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI;
 
 public class Msp_bt extends CordovaPlugin {
 
-	public static EZGUI ezgui;
+	public static EZGUI multiWiiDevice;
 	
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
 		if (action.equals("getDevices")) {
-            Log.i("getDevices","getDevices");
+            Log.i("msp_bt","getDevices");
 //			JSONObject json = new JSONObject();
 //			json.put("foo", "bar");
 			JSONArray json = new JSONArray();
@@ -27,10 +27,10 @@ public class Msp_bt extends CordovaPlugin {
             return true;
 
         } else if (action.equals("connect")) {
-            Log.i("connect","connect");
+            Log.i("msp_bt","connect");
             String deviceId = data.getString(0);
             String message = "Connect to " + deviceId;
-			ezgui = new EZGUI(this.cordova.getActivity().getApplicationContext(), deviceId);
+			multiWiiDevice = new EZGUI(this.cordova.getActivity().getApplicationContext(), deviceId);
 //			ezgui.commMW.connect(deviceId, (int)0); 
 //			ezgui.init(); 
             callbackContext.success(message);
@@ -38,7 +38,7 @@ public class Msp_bt extends CordovaPlugin {
             return true;
 
         } else if (action.equals("disconnect")) {
-            Log.i("disconnect","disconnect");
+            Log.i("msp_bt","disconnect");
             String deviceId = data.getString(0);
             String message = "disconnect " + deviceId;
             callbackContext.success(message);
@@ -46,9 +46,10 @@ public class Msp_bt extends CordovaPlugin {
             return true;
 
         } else if (action.equals("sendMessage")) {
-            Log.i("connect","connect");
+            Log.i("msp_bt","sendMessage");
             String msgCode = data.getString(0);
             String message = "send message " + msgCode;
+			//multiWiiDevice.mw.
             callbackContext.success(message);
 
             return true;

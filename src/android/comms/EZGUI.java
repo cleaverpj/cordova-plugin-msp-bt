@@ -213,7 +213,9 @@ public class EZGUI{
 			commMW = new BT_New(_context);
 			CommunicationTypeFrSky = COMMUNICATION_TYPE_BT_NEW;
 		}
-		SelectProtocol();
+
+		mw = new MultiWii230NAV(commMW);
+//		SelectProtocol();
 	}
 
 	public void SelectProtocol() {
@@ -229,7 +231,6 @@ public class EZGUI{
 //			mw = new MultiWii230NAV(commMW);
 //		}
 
-		mw = new MultiWii230NAV(commMW);
 
 //		frskyProtocol = new FrskyProtocol(commFrsky);
 
