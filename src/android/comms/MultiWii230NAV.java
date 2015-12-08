@@ -151,13 +151,16 @@ public class MultiWii230NAV extends MultirotorData {
 
 	public void evaluateCommand(byte cmd, int dataSize) {
 
-		Log.d("mw-request", "evaluateCommand:" + cmd);
+//		Log.d("mw-request", "evaluateCommand:" + cmd);
 
 		int i;
 		int icmd = (int) (cmd & 0xFF);
 
-		Log.d("mw-request", "evaluateCommand integer:" + icmd);
-
+		if (icmd == 108) {
+			Log.d("mw-request", "evaluateCommand integer:" + icmd);
+			Log.i("mw-request", "MSP_ATTITUDE:" + MSP_ATTITUDE);
+		}
+		
         String msg;
 		switch (icmd) {
 		case MSP_IDENT:
@@ -385,6 +388,9 @@ public class MultiWii230NAV extends MultirotorData {
 
 			break;
 		case MSP_ATTITUDE:
+		
+			Log.d("mw-request", "got attitude");
+			
 			angx = read16() / 10;
 			angy = read16() / 10;
 			head = read16();
