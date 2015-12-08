@@ -150,7 +150,7 @@ public class BT extends Communication {
 	@SuppressLint("NewApi")
 	private void GetRemoteDevice(String address) {
 		if (D) {
-			Log.d("BT", "attemptimpting to connect to mac:" + address);
+			Log.d("BT", "attempting to connect to mac:" + address);
 		}
 
 		BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
