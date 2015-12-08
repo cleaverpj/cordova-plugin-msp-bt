@@ -212,7 +212,7 @@ public class EZGUI{
 		Log.d("aaa", "APP ON CREATE");
 //		super.onCreate();
 
-		prefs = PreferenceManager.getDefaultSharedPreferences(App._context);
+		prefs = PreferenceManager.getDefaultSharedPreferences(cordova.getApplicationContext());
 		editor = prefs.edit();
 		Init();
 
