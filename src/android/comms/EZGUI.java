@@ -209,6 +209,8 @@ public class EZGUI{
 		}
 
 		mw = new MultiWii230NAV(commMW);
+		oldActiveModes = new boolean[20];// not the best method
+
 //		SelectProtocol();
 	}
 
@@ -228,7 +230,6 @@ public class EZGUI{
 
 //		frskyProtocol = new FrskyProtocol(commFrsky);
 
-		oldActiveModes = new boolean[20];// not the best method
 
 	}
 
@@ -352,7 +353,7 @@ public class EZGUI{
 			for (int i = 0; i < mw.CHECKBOXITEMS; i++) {
 				Log.i("ezgui", "checkbox:" + i);
 				Log.i("ezgui", "mw.ActiveModes[i]:" + mw.ActiveModes[i]);
-				Log.i("ezgui", "mw.oldActiveModes[i]:" + oldActiveModes[i]);
+				Log.i("ezgui", "oldActiveModes[i]:" + oldActiveModes[i]);
 				if (mw.ActiveModes[i] != oldActiveModes[i]) {
 					String s = "";
 					if (mw.ActiveModes[i]) {
