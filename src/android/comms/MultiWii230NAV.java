@@ -402,7 +402,7 @@ public class MultiWii230NAV extends MultirotorData {
 
 				this.attitude_x = angx;
 				this.attitude_y = angy;
-				this.heading_z = head;
+				this.attitude_z = head;
 
 				break;
 			case MSP_ALTITUDE:
