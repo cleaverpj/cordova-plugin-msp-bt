@@ -10,7 +10,7 @@ import enterprises.nucleus.plugins.multiwii_bluetooth.comms.*;
 
 public class Msp_bt extends CordovaPlugin {
 
-    private static EZGUI ezgui;
+    private static enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI ezgui;
 
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
