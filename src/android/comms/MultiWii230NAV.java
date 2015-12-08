@@ -398,7 +398,7 @@ public class MultiWii230NAV extends MultirotorData {
 				App.deviceStateRef.child("attitude").child("heading").setValue(head);
 	*/
 
-				Log.d("mw-request", "setting attitude in " + this);
+//				Log.d("mw-request", "setting attitude in " + this);
 
 				this.attitude_x = angx;
 				this.attitude_y = angy;

@@ -66,16 +66,16 @@ public class Msp_bt extends CordovaPlugin {
 			if (msgCode == 108) { //attitude
 				Log.i("msg_back", "acc_x" + multiWiiDevice.mw.attitude_x);
 				JSONObject json = new JSONObject();
-				json.put("acc_x", multiWiiDevice.mw.attitude_x);
+				json.put("attitude_x", multiWiiDevice.mw.attitude_x);
+				json.put("attitude_y", multiWiiDevice.mw.attitude_y);
+				json.put("attitude_z", multiWiiDevice.mw.attitude_z);
 				callbackContext.success(json);
-//				callbackContext.success(Float.toString(multiWiiDevice.mw.attitude_x));
 				
-//				PluginResult result = new PluginResult(PluginResult.Status.OK, json);
-//				result.setKeepCallback(true);
-//				callbackContext.sendPluginResult(result);
-	
+				// another way, only needed for async stuff??
+				//				PluginResult result = new PluginResult(PluginResult.Status.OK, json);
+				//				result.setKeepCallback(true);
+				//				callbackContext.sendPluginResult(result);	
 			}
-
             return true;
 
         } else 
