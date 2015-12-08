@@ -11,7 +11,7 @@ import enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI;
 
 public class Msp_bt extends CordovaPlugin {
 
-	private Handler mHandler;
+	private static Handler mHandler;
 
 	public static EZGUI multiWiiDevice;
 	private static boolean killme;
