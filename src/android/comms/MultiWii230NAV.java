@@ -281,6 +281,7 @@ public class MultiWii230NAV extends MultirotorData {
             this.accelerometer_y = ay;
             this.accelerometer_z = az;
 
+			Log.i("nav", "acc x:" + ax);
             // App.deviceStateRef.child("imu").child("gyro_x").setValue(gx);
             // App.deviceStateRef.child("imu").child("gyro_y").setValue(gy);
             // App.deviceStateRef.child("imu").child("gyro_z").setValue(gz);
