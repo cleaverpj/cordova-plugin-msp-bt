@@ -54,9 +54,10 @@ public class BT extends Communication {
 	@Override
 	public void Connect(String address, int speed) {
 		if (mBluetoothAdapter.isEnabled()) {
-			Log.d("BT", "Connecting");
+			Log.d("BT", "Connecting adapter");
 			try {
 				GetRemoteDevice(address);
+				Log.d("BT", "Connecting socket:" + btSocket);
 				btSocket.connect();
 				Connected = true;
 
@@ -165,6 +166,7 @@ public class BT extends Communication {
 			}
 
 			btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
+			Log.d("BT", "made serial connection:" + btSocket);
 
 		} catch (IOException e) {
 			Log.e("BT", "GetRemoteDevice: Socket creation failed.", e);
