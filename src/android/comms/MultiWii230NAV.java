@@ -145,19 +145,7 @@ public class MultiWii230NAV extends MultirotorData {
 		for (byte b : msp) {
 			arr[i++] = b;
 		}
-		Log.d("mw", String.valueOf(arr));
-		Log.d("data", String.valueOf(arr[0]));
-		Log.d("data", String.valueOf(arr[1]));
-		Log.d("data", String.valueOf(arr[2]));
-		Log.d("data", String.valueOf(arr[3]));
-		Log.d("data", String.valueOf(arr[4]));
-		Log.d("data", String.valueOf(arr[5]));
-		Log.d("data", String.valueOf(arr[6]));
-		Log.d("data", String.valueOf(arr[7]));
-		Log.d("data", String.valueOf(arr[8]));
-		Log.d("data", String.valueOf(arr[9]));
-		Log.d("data", String.valueOf(arr[10]));
-		Log.d("data", String.valueOf(arr[11]));
+		Log.d("mw-request", String.valueOf(arr));
 		communication.Write(arr); // send the complete byte sequence in one go
 	}
 
