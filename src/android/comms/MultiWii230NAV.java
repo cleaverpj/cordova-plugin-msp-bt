@@ -151,6 +151,8 @@ public class MultiWii230NAV extends MultirotorData {
 
 	public void evaluateCommand(byte cmd, int dataSize) {
 
+		Log.d("mw-request", "evaluateCommand:" + cmd);
+
 		int i;
 		int icmd = (int) (cmd & 0xFF);
         String msg;
