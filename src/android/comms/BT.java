@@ -107,7 +107,7 @@ public class BT extends Communication {
 
 	@Override
 	public byte Read() {
-		Log.d("bt", "received!!");
+//		Log.d("bt", "received!!");
 		BytesRecieved += 1;
 		byte a = 0;
 		try {
