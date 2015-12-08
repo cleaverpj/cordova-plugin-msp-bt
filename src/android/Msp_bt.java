@@ -10,6 +10,8 @@ import enterprises.nucleus.plugins.multiwii_bluetooth.comms.*;
 
 public class Msp_bt extends CordovaPlugin {
 
+    private static EZGUI ezgui;
+
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
@@ -28,7 +30,6 @@ public class Msp_bt extends CordovaPlugin {
             Log.i("connect","connect");
             String deviceId = data.getString(0);
             String message = "Connect to " + deviceId;
-			enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI ezgui = new enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI();
 			ezgui.init();
             callbackContext.success(message);
 
