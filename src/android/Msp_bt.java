@@ -29,7 +29,7 @@ public class Msp_bt extends CordovaPlugin {
             String deviceId = data.getString(0);
             String message = "Connect to " + deviceId;
 			EZGUI ezgui = new EZGUI(this.cordova.getActivity().getApplicationContext());
-			ezgui.commMW.connect(deviceId, 0); 
+			ezgui.commMW.connect(deviceId, (int)0); 
 //			ezgui.init(); 
             callbackContext.success(message);
 
