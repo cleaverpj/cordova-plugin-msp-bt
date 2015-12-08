@@ -12,5 +12,8 @@ module.exports = {
     },
     sendMessage: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "sendMessage", [args]);
-    }
+    },
+	codes: {
+		MSP_ATTITUDE: 101
+	}
 };
