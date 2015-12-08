@@ -218,7 +218,7 @@ public class EZGUI{
 		editor = prefs.edit();
 		Init();
 
-//		tts = new TTS(getApplicationContext());
+//		tts = new TTS(_context);
 
 //		prepareSounds();
 
@@ -226,9 +226,9 @@ public class EZGUI{
 
 //		soundManager.playSound(2);
 
-//		notifications = new Notifications(getApplicationContext());
+//		notifications = new Notifications(_context);
 
-//		sensors = new Sensors(getApplicationContext());
+//		sensors = new Sensors(_context);
 //		sensors.registerListener(this);
 //		sensors.start();
 
@@ -250,28 +250,28 @@ public class EZGUI{
 		}
 
 //		if (CommunicationTypeMW == COMMUNICATION_TYPE_SERIAL_FTDI) {
-//			commMW = new SerialFTDI(getApplicationContext());
+//			commMW = new SerialFTDI(_context);
 //		}
 //
 //		if (CommunicationTypeMW == COMMUNICATION_TYPE_SERIAL_OTHERCHIPS) {
-//			commMW = new SerialCDC_ACM(getApplicationContext());
+//			commMW = new SerialCDC_ACM(_context);
 //		}
 		// ////////////
 
 //		if (CommunicationTypeFrSky == COMMUNICATION_TYPE_BT) {
-//			commFrsky = new BT(getApplicationContext());
+//			commFrsky = new BT(_context);
 //		}
 //
 //		if (CommunicationTypeFrSky == COMMUNICATION_TYPE_BT_NEW) {
-//			commFrsky = new BT_New(getApplicationContext());
+//			commFrsky = new BT_New(_context);
 //		}
 
 		// if (CommunicationTypeFrSky == COMMUNICATION_TYPE_SERIAL_FTDI) {
-		// commFrsky = new SerialFTDI(getApplicationContext());
+		// commFrsky = new SerialFTDI(_context);
 		// }
 		//
 		// if (CommunicationTypeFrSky == COMMUNICATION_TYPE_SERIAL_OTHERCHIPS) {
-		// commFrsky = new SerialCDC_ACM(getApplicationContext());
+		// commFrsky = new SerialCDC_ACM(_context);
 		// }
 
 		SelectProtocol();
@@ -311,9 +311,9 @@ public class EZGUI{
 		ConnectOnStart = prefs.getBoolean(CONNECTONSTART, false);
 		// AdvancedFunctions = prefs.getBoolean(ADVANCEDFINCTIONS, false);
 
-//		AdvancedFunctions = (Sec.VerifyDeveloperID(Sec.GetDeviceID(getApplicationContext()), Sec.TestersIDs));
+//		AdvancedFunctions = (Sec.VerifyDeveloperID(Sec.GetDeviceID(_context), Sec.TestersIDs));
 		if (AdvancedFunctions)
-			Toast.makeText(getApplicationContext(), "You are a tester", Toast.LENGTH_SHORT).show();
+			Toast.makeText(_context, "You are a tester", Toast.LENGTH_SHORT).show();
 
 		DisableBTonExit = prefs.getBoolean(DISABLEBTONEXIT, true);
 		ForceLanguage = prefs.getString(FORCELANGUAGE, "");
@@ -367,18 +367,17 @@ public class EZGUI{
 
 		if (!quiet) {
      //       MainActivity.appendTvConsole(_context.getString(R.string.Settingssaved));
-//            Toast.makeText(getApplicationContext(), getString(R.string.Settingssaved), Toast.LENGTH_LONG).show();
+//            Toast.makeText(_context, getString(R.string.Settingssaved), Toast.LENGTH_LONG).show();
 			// Say(getString(R.string.Settingssaved));
 		}
 	}
 
-	@Override
-	public void onTerminate() {
+//	@Override
+//	public void onTerminate() {
 //		sensors.stop();
-		mw.CloseLoggingFile();
-		super.onTerminate();
-
-	}
+//		mw.CloseLoggingFile();
+//		super.onTerminate();
+//	}
 
 	public void Say(String text) {
 //		if (TextToSpeach)
@@ -524,7 +523,7 @@ public class EZGUI{
 	}
 
 //	private void prepareSounds() {
-//		soundManager = new SoundManager(getApplicationContext());
+//		soundManager = new SoundManager(_context);
 //		soundManager.addSound(0, R.raw.alarma);
 //		soundManager.addSound(1, R.raw.alert1);
 //		soundManager.addSound(2, R.raw.blip);
@@ -610,10 +609,10 @@ public class EZGUI{
 	}
 
 	public void RestartApp() {
-//		Intent mStartActivity = new Intent(getApplicationContext(), MainMultiWiiActivity.class);
+//		Intent mStartActivity = new Intent(_context, MainMultiWiiActivity.class);
 //		int mPendingIntentId = 123456;
-//		PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
-//		AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+//		PendingIntent mPendingIntent = PendingIntent.getActivity(_context, mPendingIntentId, mStartActivity, PendingIntent.FLAG_CANCEL_CURRENT);
+//		AlarmManager mgr = (AlarmManager) _context.getSystemService(Context.ALARM_SERVICE);
 //		mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 200, mPendingIntent);
 //		System.exit(0);
 	}
