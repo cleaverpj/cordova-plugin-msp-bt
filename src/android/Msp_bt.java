@@ -44,7 +44,7 @@ public class Msp_bt extends CordovaPlugin {
             callbackContext.success(message);
 
             return true;
-
+ 
         } else if (action.equals("sendMessage")) {
             Log.i("msp_bt","sendMessage");
             String msgCode = data.getString(0);
