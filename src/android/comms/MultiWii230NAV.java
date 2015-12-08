@@ -273,8 +273,6 @@ public class MultiWii230NAV extends MultirotorData {
 	   //         App.wsServer.sendToAll("{\"id\":" + MSP_RAW_IMU + ",\"ax\":" + ax + ",\"ay\":" + ay + ",\"az\":" + az + ",\"gx\":" + gx + ",\"gy\":" + gy + ",\"gz\":" + gz + ",\"magx\":" + magx + ",\"magy\":" + magy + ",\"magz\":" + magz + "}");
 
 				
-				Log.i("msg_back", "setting this.accelerometer_x" + this.accelerometer_x);
-
 
 				Log.i("nav", "acc x:" + ax);
 				// App.deviceStateRef.child("imu").child("gyro_x").setValue(gx);
@@ -407,9 +405,9 @@ public class MultiWii230NAV extends MultirotorData {
 
 				Log.d("mw-request", "setting attitude in " + this);
 
-				this.accelerometer_x = ax;
-				this.accelerometer_y = ay;
-				this.accelerometer_z = az;
+				this.attitude_x = angx;
+				this.attitude_y = angy;
+				this.heading_z = head;
 
 				break;
 			case MSP_ALTITUDE:
