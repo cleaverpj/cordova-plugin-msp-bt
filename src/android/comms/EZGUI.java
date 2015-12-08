@@ -245,7 +245,7 @@ public class EZGUI{
 		}
 
 		if (CommunicationTypeMW == COMMUNICATION_TYPE_BT_NEW) {
-			commMW = new BT_New(getApplicationContext());
+			commMW = new BT_New(_context);
 			CommunicationTypeFrSky = COMMUNICATION_TYPE_BT_NEW;
 		}
 
