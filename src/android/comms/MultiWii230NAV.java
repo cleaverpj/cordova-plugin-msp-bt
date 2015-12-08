@@ -272,9 +272,6 @@ public class MultiWii230NAV extends MultirotorData {
 			
 			Log.i("msg_back", "setting this.accelerometer_x" + this.accelerometer_x);
 
-            this.accelerometer_x = ax;
-            this.accelerometer_y = ay;
-            this.accelerometer_z = az;
 
 			Log.i("nav", "acc x:" + ax);
             // App.deviceStateRef.child("imu").child("gyro_x").setValue(gx);
@@ -402,6 +399,10 @@ public class MultiWii230NAV extends MultirotorData {
             App.deviceStateRef.child("attitude").child("y").setValue(angy);
             App.deviceStateRef.child("attitude").child("heading").setValue(head);
 */
+
+            this.accelerometer_x = ax;
+            this.accelerometer_y = ay;
+            this.accelerometer_z = az;
 
             break;
 		case MSP_ALTITUDE:
