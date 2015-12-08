@@ -57,7 +57,7 @@ public class Msp_bt extends CordovaPlugin {
             String message = "send message " + msgCode;
 			multiWiiDevice.mw.SendRequestMSP(Integer.parseInt(msgCode));
             callbackContext.success(message);
-
+ 
             return true;
 
         } else if (action.equals("getData")) {
