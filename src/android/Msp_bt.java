@@ -18,7 +18,7 @@ public class Msp_bt extends CordovaPlugin {
 	public static EZGUI multiWiiDevice;
 	
     @Override
-    public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
 
 		if (action.equals("getDevices")) {
             Log.i("msp_bt","getDevices");
@@ -33,7 +33,7 @@ public class Msp_bt extends CordovaPlugin {
 
         } else if (action.equals("connect")) {
             Log.i("msp_bt","connect");
-            String deviceId = data.getString(0);
+            String deviceId = args.getString(0);
             String message = "Connect to " + deviceId;
 			multiWiiDevice = new EZGUI(this.cordova.getActivity().getApplicationContext(), deviceId);
 			
@@ -45,7 +45,7 @@ public class Msp_bt extends CordovaPlugin {
 
         } else if (action.equals("disconnect")) {
             Log.i("msp_bt","disconnect");
-            String deviceId = data.getString(0);
+            String deviceId = args.getString(0);
             String message = "disconnect " + deviceId;
             callbackContext.success(message);
 
@@ -53,7 +53,7 @@ public class Msp_bt extends CordovaPlugin {
  
         } else if (action.equals("sendMessage")) {
             Log.i("msp_bt","sendMessage");
-            String msgCode = data.getString(0);
+            String msgCode = args.getString(0);
             String message = "send message " + msgCode;
 			multiWiiDevice.mw.SendRequestMSP(Integer.parseInt(msgCode));
             callbackContext.success(message);
@@ -68,7 +68,12 @@ public class Msp_bt extends CordovaPlugin {
 				JSONObject json = new JSONObject();
 				json.put("acc_x", multiWiiDevice.mw.attitude_x);
 //				callbackContext.success(json);
-				callbackContext.success(Float.toString(multiWiiDevice.mw.attitude_x));
+//				callbackContext.success(Float.toString(multiWiiDevice.mw.attitude_x));
+				
+				PluginResult result = new PluginResult(PluginResult.Status.OK, json);
+				result.setKeepCallback(true);
+				callbackContext.sendPluginResult(result);
+	
 			}
 
             return true;

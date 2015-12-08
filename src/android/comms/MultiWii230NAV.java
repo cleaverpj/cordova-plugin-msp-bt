@@ -156,11 +156,6 @@ public class MultiWii230NAV extends MultirotorData {
 		int i;
 		int icmd = (int) (cmd & 0xFF);
 
-		if (icmd == 108) {
-			Log.d("mw-request", "evaluateCommand integer:" + icmd);
-			Log.i("mw-request", "MSP_ATTITUDE:" + MSP_ATTITUDE);
-		}
-		
         String msg;
 		switch (icmd) {
 			case MSP_IDENT:
