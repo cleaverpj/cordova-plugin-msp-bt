@@ -149,18 +149,25 @@ public class BT extends Communication {
 	@SuppressLint("NewApi")
 	private void GetRemoteDevice(String address) {
 		if (D) {
-			Log.d("BT", "+ ON RESUME +");
-			Log.d("BT", "ATTEMPT CLIENT CONNECT to " + address);
+			Log.d("BT", "attemptimpting to connect to mac:" + address);
 		}
 
 		BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
+
+		if (D) {
+			Log.d("BT", "got device:" + device);
+		}
+
 		try {
+
+			if (D) {
+				Log.d("BT", "making serial connection");
+			}
 
 			btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
 
 		} catch (IOException e) {
 			Log.e("BT", "GetRemoteDevice: Socket creation failed.", e);
-//			Toast.makeText(context, context.getString(R.string.Unabletoconnect), Toast.LENGTH_LONG).show();
 		}
 
 		if (mBluetoothAdapter.isDiscovering())
@@ -182,13 +189,12 @@ public class BT extends Communication {
 				btSocket.close();
 			Connected = false;
 
-//			Toast.makeText(context, context.getString(R.string.Disconnected), Toast.LENGTH_LONG).show();
+			if (D) {
+				Log.d("BT", "socket closed");
+			}
 
 		} catch (Exception e2) {
 			Log.e("BT", "CloseSocket: Unable to close socket.", e2);
-//			Toast.makeText(context, "Unable to close socket", Toast.LENGTH_LONG).show();
 		}
-
 	}
-
 }
