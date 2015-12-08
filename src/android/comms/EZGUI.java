@@ -190,21 +190,22 @@ public class EZGUI{
 	private Context _context;
 	public boolean ConfigHasBeenChange_DisplayRestartInfo = false;
 
-    public EZGUI (Context _c) {
+    public EZGUI (Context _c, String deviceId) {
 		Log.d("aaa", "APP ON CREATE");
 		_context = _c;
 
 		prefs = PreferenceManager.getDefaultSharedPreferences(_context);
 		editor = prefs.edit();
-		Init();
+		Init(deviceId);
 	}
 
-	public void Init() {
+	public void Init(String deviceId) {
 		ReadSettings();
 		ForceLanguage();
 
 		if (CommunicationTypeMW == COMMUNICATION_TYPE_BT) {
 			commMW = new BT(_context);
+			commMW.connect(deviceId, (int) 0);
 			CommunicationTypeFrSky = COMMUNICATION_TYPE_BT;
 		}
 
