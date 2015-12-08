@@ -97,8 +97,8 @@ public class EZGUI{
 	public static final int COMMUNICATION_TYPE_SERIAL_OTHERCHIPS = 2;
 	public static final int COMMUNICATION_TYPE_BT_NEW = 4;
 
-	public int CommunicationTypeMW = COMMUNICATION_TYPE_BT_NEW;
-//	public int CommunicationTypeMW = COMMUNICATION_TYPE_BT;
+	public int CommunicationTypeMW = COMMUNICATION_TYPE_BT;
+//	public int CommunicationTypeMW = COMMUNICATION_TYPE_BT_NEW;
 
 	public static final String SERIAL_PORT_BAUD_RATE_MW = "SerialPortBaudRateMW1";
 	public int SerialPortBaudRateMW = 57600;

@@ -31,7 +31,7 @@ public class BT extends Communication {
 	public void Enable() {
 //        MainActivity.appendTvConsole("Starting Bluetooth");
 		if (D)
-			Log.d(TAG, "+++ Enable BT +++");
+			Log.d("BT", "+++ Enable BT +++");
 
 		mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 		if (mBluetoothAdapter == null) {
@@ -47,21 +47,21 @@ public class BT extends Communication {
 		}
 
 		if (D)
-			Log.d(TAG, "+++ DONE IN ON CREATE, GOT LOCAL BT ADAPTER +++");
+			Log.d("BT", "+++ DONE IN ON CREATE, GOT LOCAL BT ADAPTER +++");
 
 	}
 
 	@Override
 	public void Connect(String address, int speed) {
 //		MainActivity.appendTvConsole("Connecting");
-
+Log.d("BT", "BT connection established, data transfer link open.");
 		if (mBluetoothAdapter.isEnabled()) {
 			try {
 				GetRemoteDevice(address);
 				btSocket.connect();
 				Connected = true;
 
-				Log.d(TAG, "BT connection established, data transfer link open.");
+				Log.d("BT", "BT connection established, data transfer link open.");
  //               MainActivity.appendTvConsole("BT connection established, data transfer link open.");
 			} catch (IOException e) {
 				try {
@@ -70,21 +70,21 @@ public class BT extends Communication {
 
  //                   MainActivity.appendTvConsole("Unabletoconnect");
 				} catch (IOException e2) {
-					Log.e(TAG, "ON RESUME: Unable to close socket during connection failure", e2);
+					Log.e("BT", "ON RESUME: Unable to close socket during connection failure", e2);
   //                  MainActivity.appendTvConsole("Connection failure");
 				}
 			}
 
 			// Create a data stream so we can talk to server.
 			if (D)
-				Log.d(TAG, "+ getOutputStream  getInputStream +");
+				Log.d("BT", "+ getOutputStream  getInputStream +");
 
 			try {
 				outStream = btSocket.getOutputStream();
 				inStream = btSocket.getInputStream();
 
 			} catch (IOException e) {
-				Log.e(TAG, "ON RESUME: Output stream creation failed.", e);
+				Log.e("BT", "ON RESUME: Output stream creation failed.", e);
   //              MainActivity.appendTvConsole("Stream creation failed");
 			}
 		}
@@ -126,7 +126,7 @@ public class BT extends Communication {
 			if (Connected)
 				outStream.write(arr);
 		} catch (IOException e) {
-			Log.e(TAG, "SEND : Exception during write.", e);
+			Log.e("BT", "SEND : Exception during write.", e);
 			CloseSocket();
 
 			Toast.makeText(context, "Write error", Toast.LENGTH_LONG).show();
@@ -151,8 +151,8 @@ public class BT extends Communication {
 	@SuppressLint("NewApi")
 	private void GetRemoteDevice(String address) {
 		if (D) {
-			Log.d(TAG, "+ ON RESUME +");
-			Log.d(TAG, "+ ABOUT TO ATTEMPT CLIENT CONNECT +");
+			Log.d("BT", "+ ON RESUME +");
+			Log.d("BT", "+ ABOUT TO ATTEMPT CLIENT CONNECT +");
 		}
 
 		BluetoothDevice device = mBluetoothAdapter.getRemoteDevice(address);
@@ -161,7 +161,7 @@ public class BT extends Communication {
 			btSocket = device.createRfcommSocketToServiceRecord(MY_UUID);
 
 		} catch (IOException e) {
-			Log.e(TAG, "ON RESUME: Socket creation failed.", e);
+			Log.e("BT", "ON RESUME: Socket creation failed.", e);
 //			Toast.makeText(context, context.getString(R.string.Unabletoconnect), Toast.LENGTH_LONG).show();
 		}
 
@@ -174,7 +174,7 @@ public class BT extends Communication {
 			try {
 				outStream.flush();
 			} catch (IOException e) {
-				Log.e(TAG, "ON PAUSE: Couldn't flush output stream.", e);
+				Log.e("BT", "ON PAUSE: Couldn't flush output stream.", e);
 				Toast.makeText(context, "Unable to close socket", Toast.LENGTH_LONG).show();
 			}
 		}
@@ -187,7 +187,7 @@ public class BT extends Communication {
 //			Toast.makeText(context, context.getString(R.string.Disconnected), Toast.LENGTH_LONG).show();
 
 		} catch (Exception e2) {
-			Log.e(TAG, "ON PAUSE: Unable to close socket.", e2);
+			Log.e("BT", "ON PAUSE: Unable to close socket.", e2);
 //			Toast.makeText(context, "Unable to close socket", Toast.LENGTH_LONG).show();
 		}
 
