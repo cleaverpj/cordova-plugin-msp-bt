@@ -23,6 +23,10 @@
       </feature>
     </config-file>
 
+	<config-file target="AndroidManifest.xml" parent="/manifest">
+        <uses-permission android:name="android.permission.BLUETOOTH" />
+    </config-file>
+		
     <source-file src="src/android/Msp_bt.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth"/>
 	
       <!-- Java Library Sources -->
