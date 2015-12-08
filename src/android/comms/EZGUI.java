@@ -86,7 +86,6 @@ public class EZGUI{
 	public static final int COMMUNICATION_TYPE_BT = 0;
 	public static final int COMMUNICATION_TYPE_SERIAL_FTDI = 1;
 	public static final int COMMUNICATION_TYPE_SERIAL_OTHERCHIPS = 2;
-	public static final int COMMUNICATION_TYPE_BT_NEW = 4;
 
 	public int CommunicationTypeMW = COMMUNICATION_TYPE_BT;
 //	public int CommunicationTypeMW = COMMUNICATION_TYPE_BT_NEW;
@@ -207,11 +206,6 @@ public class EZGUI{
 			commMW = new BT(_context);
 			commMW.Connect(deviceId, (int) 0);
 			CommunicationTypeFrSky = COMMUNICATION_TYPE_BT;
-		}
-
-		if (CommunicationTypeMW == COMMUNICATION_TYPE_BT_NEW) {
-			commMW = new BT_New(_context);
-			CommunicationTypeFrSky = COMMUNICATION_TYPE_BT_NEW;
 		}
 
 		mw = new MultiWii230NAV(commMW);
