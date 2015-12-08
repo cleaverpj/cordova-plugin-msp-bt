@@ -120,6 +120,7 @@ public class BT extends Communication {
 
 	@Override
 	public void Write(byte[] arr) {
+		Log.d("bt", "sending:" + String.valueOf(arr));
 		super.Write(arr);
 		try {
 			if (Connected)
