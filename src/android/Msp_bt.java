@@ -12,6 +12,8 @@ public class Msp_bt extends CordovaPlugin {
 
 	public static EZGUI multiWiiDevice;
 	
+
+	
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
 
@@ -31,6 +33,8 @@ public class Msp_bt extends CordovaPlugin {
             String deviceId = data.getString(0);
             String message = "Connect to " + deviceId;
 			multiWiiDevice = new EZGUI(this.cordova.getActivity().getApplicationContext(), deviceId);
+			
+			
 //			ezgui.commMW.connect(deviceId, (int)0); 
 //			ezgui.init(); 
             callbackContext.success(message);
@@ -59,4 +63,72 @@ public class Msp_bt extends CordovaPlugin {
             return false;
 
     }
+	
+		    private static Runnable update = new Runnable() {
+        @Override
+        public void run() {
+
+            multiWiiDevice.mw.ProcessSerialData(multiWiiDevice.loggingON);
+
+//            multiWiiDevice.frskyProtocol.ProcessSerialData(false);
+//            if (multiWiiDevice.commFrsky.Connected)
+//                setSupportProgress((int) Functions.map(multiWiiDevice.frskyProtocol.TxRSSI, 0, 110, 0, 10000));
+
+            String t = new String();
+            if (multiWiiDevice.mw.BaroPresent == 1)
+                t += "[BARO] ";
+            if (multiWiiDevice.mw.GPSPresent == 1)
+                t += "[GPS] ";
+            if (multiWiiDevice.mw.multi_Capability.Nav)
+                t += "[NAV" + String.valueOf(multiWiiDevice.mw.multi_Capability.getNavVersion(multiWiiDevice.mw.multiCapability)) + "] ";
+            if (multiWiiDevice.mw.SonarPresent == 1)
+                t += "[SONAR] ";
+            if (multiWiiDevice.mw.MagPresent == 1)
+                t += "[MAG] ";
+            if (multiWiiDevice.mw.AccPresent == 1)
+                t += "[ACC]";
+
+            String t1 = "[" + multiWiiDevice.mw.MultiTypeName[multiWiiDevice.mw.multiType] + "] ";
+            t1 += "MultiWii " + String.valueOf(multiWiiDevice.mw.version / 100f);
+
+            if (multiWiiDevice.mw.multi_Capability.ByMis)
+                t += " by Miœ";
+
+            t1 += "\n" + t + "\n";
+            t1 += _context.getString(R.string.SelectedProfile) + ":" + String.valueOf(multiWiiDevice.mw.confSetting) + "\n";
+
+            if (multiWiiDevice.mw.ArmCount > 0) {
+
+                int hours = multiWiiDevice.mw.LifeTime / 3600;
+                int minutes = (multiWiiDevice.mw.LifeTime % 3600) / 60;
+                int seconds = multiWiiDevice.mw.LifeTime % 60;
+
+                String timeString = hours + ":" + minutes + ":" + seconds;
+
+                t1 += _context.getString(R.string.ArmedCount) + ":" + String.valueOf(multiWiiDevice.mw.ArmCount) + "  " + _context.getString(R.string.LiveTime) + ":" + timeString;
+            }
+
+//            if (multiWiiDevice.commMW.Connected)
+//                MainActivity.multiWiiDeviceendTvConsole(t1);
+            //  else
+            // MainActivity.multiWiiDeviceendTvConsole(_context.getString(R.string.Disconnected));
+
+//            if (!multiWiiDevice.mw.multi_Capability.Nav) {
+//                ((Button) adapter.views.get(0).findViewById(R.id.ButtonNavigation)).setVisibility(View.GONE);
+//            } else {
+//                ((Button) adapter.views.get(0).findViewById(R.id.ButtonNavigation)).setVisibility(View.VISIBLE);
+//            }
+
+            multiWiiDevice.Frequentjobs();
+            multiWiiDevice.mw.SendRequest(multiWiiDevice.MainRequestMethod);
+            if (!killme)
+                App.mHandler.postDelayed(update, multiWiiDevice.RefreshRate);
+
+            if (multiWiiDevice.D)
+                Log.d(multiWiiDevice.TAG, "loop " + this.getClass().getName());
+        }
+
+    };
+	
+	
 }
