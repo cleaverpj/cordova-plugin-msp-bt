@@ -205,7 +205,7 @@ public class EZGUI{
 
 		if (CommunicationTypeMW == COMMUNICATION_TYPE_BT) {
 			commMW = new BT(_context);
-			commMW.connect(deviceId, (int) 0);
+			commMW.Connect(deviceId, (int) 0);
 			CommunicationTypeFrSky = COMMUNICATION_TYPE_BT;
 		}
 
