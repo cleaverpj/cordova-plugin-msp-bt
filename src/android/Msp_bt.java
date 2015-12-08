@@ -11,7 +11,7 @@ import enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI;
 public class Msp_bt extends CordovaPlugin {
 
 	public static EZGUI multiWiiDevice;
-	
+	private boolean killme;
 
 	
     @Override
@@ -95,7 +95,7 @@ public class Msp_bt extends CordovaPlugin {
                 t += " by Miœ";
 
             t1 += "\n" + t + "\n";
-            t1 += _context.getString(R.string.SelectedProfile) + ":" + String.valueOf(multiWiiDevice.mw.confSetting) + "\n";
+            t1 += "selectedProfile" + ":" + String.valueOf(multiWiiDevice.mw.confSetting) + "\n";
 
             if (multiWiiDevice.mw.ArmCount > 0) {
 
@@ -105,7 +105,7 @@ public class Msp_bt extends CordovaPlugin {
 
                 String timeString = hours + ":" + minutes + ":" + seconds;
 
-                t1 += _context.getString(R.string.ArmedCount) + ":" + String.valueOf(multiWiiDevice.mw.ArmCount) + "  " + _context.getString(R.string.LiveTime) + ":" + timeString;
+                t1 += "armedCount" + ":" + String.valueOf(multiWiiDevice.mw.ArmCount) + "  " + "liveTime" + ":" + timeString;
             }
 
 //            if (multiWiiDevice.commMW.Connected)
