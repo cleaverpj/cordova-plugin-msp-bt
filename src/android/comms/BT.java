@@ -123,8 +123,10 @@ public class BT extends Communication {
 		Log.d("bt", "sending:" + String.valueOf(arr));
 		super.Write(arr);
 		try {
-			if (Connected)
+			if (Connected) {
 				outStream.write(arr);
+				Log.d("bt", "sent:" + String.valueOf(arr));
+			}
 		} catch (IOException e) {
 			Log.e("BT", "SEND : Exception during write.", e);
 			CloseSocket();
