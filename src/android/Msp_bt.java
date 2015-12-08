@@ -3,6 +3,7 @@ package enterprises.nucleus.plugins.multiwii_bluetooth;
 import android.util.Log;
 import org.apache.cordova.*;
 import org.json.JSONObject;
+import android.os.Handler;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -10,8 +11,12 @@ import enterprises.nucleus.plugins.multiwii_bluetooth.comms.EZGUI;
 
 public class Msp_bt extends CordovaPlugin {
 
+	private Handler mHandler;
+
 	public static EZGUI multiWiiDevice;
 	private static boolean killme;
+	
+	private static final refreshRate = 100;
 
 	
     @Override
@@ -34,7 +39,8 @@ public class Msp_bt extends CordovaPlugin {
             String message = "Connect to " + deviceId;
 			multiWiiDevice = new EZGUI(this.cordova.getActivity().getApplicationContext(), deviceId);
 			
-			
+			mHandler = new Handler();
+			mHandler.postDelayed(update, refreshRate);
 //			ezgui.commMW.connect(deviceId, (int)0); 
 //			ezgui.init(); 
             callbackContext.success(message);
@@ -122,8 +128,8 @@ public class Msp_bt extends CordovaPlugin {
             multiWiiDevice.Frequentjobs();
             multiWiiDevice.mw.SendRequest(multiWiiDevice.MainRequestMethod);
 			
-//            if (!killme)
-  //              App.mHandler.postDelayed(update, multiWiiDevice.RefreshRate);
+            if (!killme)
+                app.mHandler.postDelayed(update, multiWiiDevice.RefreshRate);
 
             if (multiWiiDevice.D)
                 Log.d(multiWiiDevice.TAG, "loop " + this.getClass().getName());
