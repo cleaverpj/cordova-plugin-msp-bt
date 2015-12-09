@@ -253,7 +253,7 @@ public abstract class MultirotorData {
 																	// navigation
 																	// ready
 
-	public abstract void SendRequestMSP_SET_WP_NAV(WaypointNav w);
+	public abstract void SendRequestMSP_SET_WP_NAV(WaypointNav w); 
 
 	public abstract void SendRequestMSP_SET_SERIAL_BAUDRATE(int baudRate);
 
