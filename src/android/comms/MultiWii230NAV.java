@@ -401,6 +401,20 @@ public class MultiWii230NAV extends MultirotorData {
 
 				break;
 			case MSP_WP:
+				WaypointNav WP = new WaypointNav();
+				WP.Number = read8();
+				WP.Action = read8();
+				WP.Lat = read32();
+				WP.Lon = read32();
+				WP.Altitude = read32() / 100;
+				WP.Parameter1 = read16();
+				WP.Parameter2 = read16();
+				WP.Parameter3 = read16();
+				WP.Flag = read8();
+
+				WaypointsList.add(WP);
+
+				Log.d("nav", "MSP_WP (get) " + String.valueOf(WP.Number) + "  " + String.valueOf(WP.Lat) + "x" + String.valueOf(WP.Lon) + " A" + String.valueOf(WP.Action) + " F" + String.valueOf(WP.Flag));
 				break;
 
 			case MSP_NAV_CONFIG:
