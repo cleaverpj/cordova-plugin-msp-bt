@@ -168,7 +168,7 @@ public abstract class MultirotorData {
 	public int MagPresent;
 	public int GPSPresent;
 	public int SonarPresent;
-	int activation[];
+	public int activation[];
 
 	public float timer1, timer2;
 	public int cycleTime, i2cError;
@@ -177,7 +177,7 @@ public abstract class MultirotorData {
 	public Boolean[][] Checkbox = new Boolean[CHECKBOXITEMS][12]; // state of
 																	// chexboxes
 
-	int byteMP[] = new int[8]; // Motor // Pins. // Varies // by // multiType //
+	public int byteMP[] = new int[8]; // Motor // Pins. // Varies // by // multiType //
 								// and // Arduino // model // (pro // Mini, //
 								// // Mega, // etc).
 
