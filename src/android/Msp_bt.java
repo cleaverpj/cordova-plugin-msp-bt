@@ -158,15 +158,15 @@ public class Msp_bt extends CordovaPlugin {
 			} else if(msgCode ==multiWiiDevice.mw.MSP_ACC_CALIBRATION) {
 			} else if(msgCode ==multiWiiDevice.mw.MSP_MAG_CALIBRATION) {
 			} else if(msgCode ==multiWiiDevice.mw.MSP_PID) {
-				for (var i = 0; i < multiWiiDevice.mw.PIDITEMS; i++) {
+				for (int i = 0; i < multiWiiDevice.mw.PIDITEMS; i++) {
 					json.put("P" + i, multiWiiDevice.mw.byteP[i]);
 					json.put("I" + i, multiWiiDevice.mw.byteI[i]);
 					json.put("D" + i, multiWiiDevice.mw.byteD[i]);
 				}
 			} else if(msgCode ==multiWiiDevice.mw.MSP_BOX) {
-				for (var i = 0; i < multiWiiDevice.mw.CHECKBOXITEMS; i++) {
+				for (int i = 0; i < multiWiiDevice.mw.CHECKBOXITEMS; i++) {
 					json.put("activation" + i,  multiWiiDevice.mw.activation[i]);
-					for (var int aa = 0; aa < 12; aa++) {
+					for (int aa = 0; aa < 12; aa++) {
 						json.put("checkbox" + i + "_" + aa,  multiWiiDevice.mw.Checkbox[i][aa]);
 					}
 				}
@@ -187,7 +187,7 @@ public class Msp_bt extends CordovaPlugin {
 				json.put("vbatlevel_warn2", multiWiiDevice.mw.vbatlevel_warn2);
 				json.put("vbatlevel_crit", multiWiiDevice.mw.vbatlevel_crit);
 			} else if(msgCode ==multiWiiDevice.mw.MSP_MOTOR_PINS) {
-				for (var i = 0; i < 8; i++) {
+				for (int i = 0; i < 8; i++) {
 					json.put("byteMP" + i, multiWiiDevice.mw.byteMP[i]);
 				}
 			} else if(msgCode ==multiWiiDevice.mw.MSP_DEBUG) {
