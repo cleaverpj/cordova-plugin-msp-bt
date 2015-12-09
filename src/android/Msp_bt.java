@@ -64,205 +64,152 @@ public class Msp_bt extends CordovaPlugin {
             Log.i("msp_bt","sendMessage");
             int msgCode = Integer.parseInt(args.getString(0));
 			JSONObject json = new JSONObject();
-			switch (msgCode) {
-				case multiWiiDevice.mw.MSP_IDENT:
-					json.put("version", multiWiiDevice.mw.version);
-					json.put("multiType", multiWiiDevice.mw.multiType);
-					json.put("MSPversion", multiWiiDevice.mw.MSPversion);
-					
-					break;
-					
-				case multiWiiDevice.mw.MSP_STATUS:
-					json.put("cycleTime", multiWiiDevice.mw.cycleTime);
-					json.put("i2cError", multiWiiDevice.mw.i2cError);
-					json.put("mode", multiWiiDevice.mw.mode);
-					json.put("confSetting", multiWiiDevice.mw.confSetting);
-					json.put("AccPresent", multiWiiDevice.mw.AccPresent);
-					json.put("BaroPresent", multiWiiDevice.mw.BaroPresent);
-					json.put("MagPresent", multiWiiDevice.mw.MagPresent);
-					json.put("GPSPresent", multiWiiDevice.mw.GPSPresent);
-					json.put("SonarPresent", multiWiiDevice.mw.SonarPresent);
-					json.put("MSPversion", multiWiiDevice.mw.MSPversion);
-					json.put("CHECKBOXITEMS", multiWiiDevice.mw.CHECKBOXITEMS);
+			if(msgCode ==multiWiiDevice.mw.MSP_IDENT) {
+				json.put("version", multiWiiDevice.mw.version);
+				json.put("multiType", multiWiiDevice.mw.multiType);
+				json.put("MSPversion", multiWiiDevice.mw.MSPversion);					
+			} else if(msgCode ==multiWiiDevice.mw.MSP_STATUS) {
+				json.put("cycleTime", multiWiiDevice.mw.cycleTime);
+				json.put("i2cError", multiWiiDevice.mw.i2cError);
+				json.put("mode", multiWiiDevice.mw.mode);
+				json.put("confSetting", multiWiiDevice.mw.confSetting);
+				json.put("AccPresent", multiWiiDevice.mw.AccPresent);
+				json.put("BaroPresent", multiWiiDevice.mw.BaroPresent);
+				json.put("MagPresent", multiWiiDevice.mw.MagPresent);
+				json.put("GPSPresent", multiWiiDevice.mw.GPSPresent);
+				json.put("SonarPresent", multiWiiDevice.mw.SonarPresent);
+				json.put("MSPversion", multiWiiDevice.mw.MSPversion);
+				json.put("CHECKBOXITEMS", multiWiiDevice.mw.CHECKBOXITEMS);
 //					ActiveModes[i]
-					break;
-					
-				case multiWiiDevice.mw.MSP_RAW_IMU:
-					json.put("ax", multiWiiDevice.mw.ax);
-					json.put("ay", multiWiiDevice.mw.ay);
-					json.put("az", multiWiiDevice.mw.az);
-					json.put("gx", multiWiiDevice.mw.gx);
-					json.put("gy", multiWiiDevice.mw.gy);
-					json.put("gz", multiWiiDevice.mw.gz);
-					json.put("magx", multiWiiDevice.mw.magx);
-					json.put("magy", multiWiiDevice.mw.magy);
-					json.put("magz", multiWiiDevice.mw.magz);
-					break;
-					
-				case multiWiiDevice.mw.MSP_SERVO:
-					json.put("servo1", multiWiiDevice.mw.servo[0]);
-					json.put("servo2", multiWiiDevice.mw.servo[1]);
-					json.put("servo3", multiWiiDevice.mw.servo[2]);
-					json.put("servo4", multiWiiDevice.mw.servo[3]);
-					json.put("servo5", multiWiiDevice.mw.servo[4]);
-					json.put("servo6", multiWiiDevice.mw.servo[5]);
-					json.put("servo7", multiWiiDevice.mw.servo[6]);
-					json.put("servo8", multiWiiDevice.mw.servo[7]);
-					break;
-					
-				case multiWiiDevice.mw.MSP_MOTOR:
-					json.put("motor1", multiWiiDevice.mw.mot[0]);
-					json.put("motor2", multiWiiDevice.mw.mot[1]);
-					json.put("motor3", multiWiiDevice.mw.mot[2]);
-					json.put("motor4", multiWiiDevice.mw.mot[3]);
-					json.put("motor5", multiWiiDevice.mw.mot[4]);
-					json.put("motor6", multiWiiDevice.mw.mot[5]);
-					json.put("motor7", multiWiiDevice.mw.mot[6]);
-					json.put("motor8", multiWiiDevice.mw.mot[7]);
-					break;
-					
-				case multiWiiDevice.mw.MSP_RC:
-					json.put("rcRoll", multiWiiDevice.mw.rcRoll);
-					json.put("rcPitch", multiWiiDevice.mw.rcPitch);
-					json.put("rcYaw", multiWiiDevice.mw.rcYaw);
-					json.put("rcThrottle", multiWiiDevice.mw.rcThrottle);
-					json.put("rcAUX1", multiWiiDevice.mw.rcAUX1);
-					json.put("rcAUX2", multiWiiDevice.mw.rcAUX2);
-					json.put("rcAUX3", multiWiiDevice.mw.rcAUX3);
-					json.put("rcAUX4", multiWiiDevice.mw.rcAUX4);
-					break;
-					
-				case multiWiiDevice.mw.MSP_RAW_GPS:
-					json.put("GPS_fix", multiWiiDevice.mw.GPS_fix);
-					json.put("GPS_numSat", multiWiiDevice.mw.GPS_numSat);
-					json.put("GPS_latitude", multiWiiDevice.mw.GPS_latitude);
-					json.put("GPS_longitude", multiWiiDevice.mw.GPS_longitude);
-					json.put("GPS_altitude", multiWiiDevice.mw.GPS_altitude);
-					json.put("GPS_speed", multiWiiDevice.mw.GPS_speed);
-					json.put("GPS_ground_course", multiWiiDevice.mw.GPS_ground_course);
-					break;
-					
-				case multiWiiDevice.mw.MSP_COMP_GPS:
-					json.put("GPS_distanceToHome", multiWiiDevice.mw.GPS_distanceToHome);
-					json.put("GPS_directionToHome", multiWiiDevice.mw.GPS_directionToHome);
-					json.put("GPS_update", multiWiiDevice.mw.GPS_update);
-					break;
-					
-				case multiWiiDevice.mw.MSP_ATTITUDE:
-					json.put("ang_x", multiWiiDevice.mw.ang_x);
-					json.put("attitude_y", multiWiiDevice.mw.ang_y);
-					json.put("heading", multiWiiDevice.mw.head);
-					callbackContext.success(json);
-					// another way, only needed for async stuff??
-					//				PluginResult result = new PluginResult(PluginResult.Status.OK, json);
-					//				result.setKeepCallback(true);
-					//				callbackContext.sendPluginResult(result);	
-					break;
-				case multiWiiDevice.mw.MSP_ALTITUDE:
-					json.put("alt", multiWiiDevice.mw.alt);
-					json.put("vario", multiWiiDevice.mw.vario);
-					break;
-					
-				case multiWiiDevice.mw.MSP_ANALOG:
-					json.put("bytevbat", multiWiiDevice.mw.bytevbat);
-					json.put("pMeterSum", multiWiiDevice.mw.pMeterSum);
-					json.put("rssi", multiWiiDevice.mw.rssi);
-					json.put("amperage", multiWiiDevice.mw.amperage);
-					break;
-					
-				case multiWiiDevice.mw.MSP_RC_TUNING:
-					json.put("byteRC_RATE", multiWiiDevice.mw.byteRC_RATE);
-					json.put("byteRC_EXPO", multiWiiDevice.mw.byteRC_EXPO);
-					json.put("byteRollPitchRate", multiWiiDevice.mw.byteRollPitchRate);
-					json.put("byteYawRate", multiWiiDevice.mw.byteYawRate);
-					json.put("byteDynThrPID", multiWiiDevice.mw.byteDynThrPID);
-					json.put("byteThrottle_MID", multiWiiDevice.mw.byteThrottle_MID);
-					json.put("byteThrottle_EXPO", multiWiiDevice.mw.byteThrottle_EXPO);
-					break;
-
-				case multiWiiDevice.mw.MSP_ACC_CALIBRATION:
-					break;
-					
-				case multiWiiDevice.mw.MSP_MAG_CALIBRATION:
-					break;
-					
-				case multiWiiDevice.mw.MSP_PID:
-					for (i = 0; i < multiWiiDevice.mw.PIDITEMS; i++) {
-						json.put("P" + i, multiWiiDevice.mw.byteP[i]);
-						json.put("I" + i, multiWiiDevice.mw.byteI[i]);
-						json.put("D" + i, multiWiiDevice.mw.byteD[i]);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_RAW_IMU) {
+				json.put("ax", multiWiiDevice.mw.ax);
+				json.put("ay", multiWiiDevice.mw.ay);
+				json.put("az", multiWiiDevice.mw.az);
+				json.put("gx", multiWiiDevice.mw.gx);
+				json.put("gy", multiWiiDevice.mw.gy);
+				json.put("gz", multiWiiDevice.mw.gz);
+				json.put("magx", multiWiiDevice.mw.magx);
+				json.put("magy", multiWiiDevice.mw.magy);
+				json.put("magz", multiWiiDevice.mw.magz);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_SERVO) {
+				json.put("servo1", multiWiiDevice.mw.servo[0]);
+				json.put("servo2", multiWiiDevice.mw.servo[1]);
+				json.put("servo3", multiWiiDevice.mw.servo[2]);
+				json.put("servo4", multiWiiDevice.mw.servo[3]);
+				json.put("servo5", multiWiiDevice.mw.servo[4]);
+				json.put("servo6", multiWiiDevice.mw.servo[5]);
+				json.put("servo7", multiWiiDevice.mw.servo[6]);
+				json.put("servo8", multiWiiDevice.mw.servo[7]);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_MOTOR) {
+				json.put("motor1", multiWiiDevice.mw.mot[0]);
+				json.put("motor2", multiWiiDevice.mw.mot[1]);
+				json.put("motor3", multiWiiDevice.mw.mot[2]);
+				json.put("motor4", multiWiiDevice.mw.mot[3]);
+				json.put("motor5", multiWiiDevice.mw.mot[4]);
+				json.put("motor6", multiWiiDevice.mw.mot[5]);
+				json.put("motor7", multiWiiDevice.mw.mot[6]);
+				json.put("motor8", multiWiiDevice.mw.mot[7]);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_RC) {
+				json.put("rcRoll", multiWiiDevice.mw.rcRoll);
+				json.put("rcPitch", multiWiiDevice.mw.rcPitch);
+				json.put("rcYaw", multiWiiDevice.mw.rcYaw);
+				json.put("rcThrottle", multiWiiDevice.mw.rcThrottle);
+				json.put("rcAUX1", multiWiiDevice.mw.rcAUX1);
+				json.put("rcAUX2", multiWiiDevice.mw.rcAUX2);
+				json.put("rcAUX3", multiWiiDevice.mw.rcAUX3);
+				json.put("rcAUX4", multiWiiDevice.mw.rcAUX4);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_RAW_GPS) {
+				json.put("GPS_fix", multiWiiDevice.mw.GPS_fix);
+				json.put("GPS_numSat", multiWiiDevice.mw.GPS_numSat);
+				json.put("GPS_latitude", multiWiiDevice.mw.GPS_latitude);
+				json.put("GPS_longitude", multiWiiDevice.mw.GPS_longitude);
+				json.put("GPS_altitude", multiWiiDevice.mw.GPS_altitude);
+				json.put("GPS_speed", multiWiiDevice.mw.GPS_speed);
+				json.put("GPS_ground_course", multiWiiDevice.mw.GPS_ground_course);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_COMP_GPS) {
+				json.put("GPS_distanceToHome", multiWiiDevice.mw.GPS_distanceToHome);
+				json.put("GPS_directionToHome", multiWiiDevice.mw.GPS_directionToHome);
+				json.put("GPS_update", multiWiiDevice.mw.GPS_update);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_ATTITUDE) {
+				json.put("ang_x", multiWiiDevice.mw.ang_x);
+				json.put("attitude_y", multiWiiDevice.mw.ang_y);
+				json.put("heading", multiWiiDevice.mw.head);
+				callbackContext.success(json);
+				// another way, only needed for async stuff??
+				//				PluginResult result = new PluginResult(PluginResult.Status.OK, json);
+				//				result.setKeepCallback(true);
+				//				callbackContext.sendPluginResult(result);	
+			} else if(msgCode ==multiWiiDevice.mw.MSP_ALTITUDE) {
+				json.put("alt", multiWiiDevice.mw.alt);
+				json.put("vario", multiWiiDevice.mw.vario);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_ANALOG) {
+				json.put("bytevbat", multiWiiDevice.mw.bytevbat);
+				json.put("pMeterSum", multiWiiDevice.mw.pMeterSum);
+				json.put("rssi", multiWiiDevice.mw.rssi);
+				json.put("amperage", multiWiiDevice.mw.amperage);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_RC_TUNING) {
+				json.put("byteRC_RATE", multiWiiDevice.mw.byteRC_RATE);
+				json.put("byteRC_EXPO", multiWiiDevice.mw.byteRC_EXPO);
+				json.put("byteRollPitchRate", multiWiiDevice.mw.byteRollPitchRate);
+				json.put("byteYawRate", multiWiiDevice.mw.byteYawRate);
+				json.put("byteDynThrPID", multiWiiDevice.mw.byteDynThrPID);
+				json.put("byteThrottle_MID", multiWiiDevice.mw.byteThrottle_MID);
+				json.put("byteThrottle_EXPO", multiWiiDevice.mw.byteThrottle_EXPO);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_ACC_CALIBRATION) {
+			} else if(msgCode ==multiWiiDevice.mw.MSP_MAG_CALIBRATION) {
+			} else if(msgCode ==multiWiiDevice.mw.MSP_PID) {
+				for (i = 0; i < multiWiiDevice.mw.PIDITEMS; i++) {
+					json.put("P" + i, multiWiiDevice.mw.byteP[i]);
+					json.put("I" + i, multiWiiDevice.mw.byteI[i]);
+					json.put("D" + i, multiWiiDevice.mw.byteD[i]);
+				}
+			} else if(msgCode ==multiWiiDevice.mw.MSP_BOX) {
+				for (i = 0; i < multiWiiDevice.mw.CHECKBOXITEMS; i++) {
+					json.put("activation" + i,  multiWiiDevice.mw.activation[i]);
+					for (int aa = 0; aa < 12; aa++) {
+						json.put("checkbox" + i + "_" + aa,  multiWiiDevice.mw.Checkbox[i][aa]);
 					}
-					break;
-					
-				case multiWiiDevice.mw.MSP_BOX:
-					for (i = 0; i < multiWiiDevice.mw.CHECKBOXITEMS; i++) {
-						json.put("activation" + i,  multiWiiDevice.mw.activation[i]);
-						for (int aa = 0; aa < 12; aa++) {
-							json.put("checkbox" + i + "_" + aa,  multiWiiDevice.mw.Checkbox[i][aa]);
-						}
-					}
-					break;
-					
-				case multiWiiDevice.mw.MSP_BOXNAMES:
-					break;
-					
-				case multiWiiDevice.mw.MSP_PIDNAMES:
-					break;
-					
-				case multiWiiDevice.mw.MSP_SERVO_CONF:
-					break;
-					
-				case multiWiiDevice.mw.MSP_MISC:
-					json.put("intPowerTrigger", multiWiiDevice.mw.intPowerTrigger);
-					json.put("minthrottle", multiWiiDevice.mw.minthrottle);
-					json.put("maxthrottle", multiWiiDevice.mw.maxthrottle);
-					json.put("mincommand", multiWiiDevice.mw.mincommand);
-					json.put("failsafe_throttle", multiWiiDevice.mw.failsafe_throttle);
-					json.put("ArmCount", multiWiiDevice.mw.ArmCount);
-					json.put("LifeTime", multiWiiDevice.mw.LifeTime);
-					json.put("mag_decliniation", multiWiiDevice.mw.mag_decliniation);
-					json.put("vbatscale", multiWiiDevice.mw.vbatscale);
-					json.put("vbatlevel_warn1", multiWiiDevice.mw.vbatlevel_warn1);
-					json.put("vbatlevel_warn2", multiWiiDevice.mw.vbatlevel_warn2);
-					json.put("vbatlevel_crit", multiWiiDevice.mw.vbatlevel_crit);
-					break;
-					
-				case multiWiiDevice.mw.MSP_MOTOR_PINS:
-					for (i = 0; i < 8; i++) {
-						json.put("byteMP" + i, multiWiiDevice.mw.byteMP[i]);
-					}
-					break;
-					
-				case multiWiiDevice.mw.MSP_DEBUG:
-					json.put("debug1", multiWiiDevice.mw.debug1);
-					json.put("debug2", multiWiiDevice.mw.debug2);
-					json.put("debug3", multiWiiDevice.mw.debug3);
-					json.put("debug4", multiWiiDevice.mw.debug4);
-					break;
-					
-				case multiWiiDevice.mw.MSP_DEBUGMSG:					
-					break;
-					
-				case multiWiiDevice.mw.MSP_WP:
-					break;
-					
-				case multiWiiDevice.mw.MSP_NAV_CONFIG:
-					json.put("NAVmaxWpNumber", multiWiiDevice.mw.NAVmaxWpNumber);				
-					break;
-					
-				case multiWiiDevice.mw.MSP_NAV_STATUS:
-					json.put("NAVGPSMode", multiWiiDevice.mw.NAVGPSMode);
-					json.put("NAVstate", multiWiiDevice.mw.NAVstate);
-					json.put("NAVcurrentAction", multiWiiDevice.mw.NAVcurrentAction);
-					json.put("NAVcurrentWPNumber", multiWiiDevice.mw.NAVcurrentWPNumber);
-					json.put("NAVerror", multiWiiDevice.mw.NAVerror);
-					json.put("NAVoriginalAltitude", multiWiiDevice.mw.NAVoriginalAltitude);
-					json.put("NAVtargetAltitude", multiWiiDevice.mw.NAVtargetAltitude);
-					json.put("NAValtToHold", multiWiiDevice.mw.NAValtToHold);
-					json.put("NAValtChangeFlag", multiWiiDevice.mw.NAValtChangeFlag);
-					break;
-					
-			}
+				}
+			} else if(msgCode ==multiWiiDevice.mw.MSP_BOXNAMES) {
+			} else if(msgCode ==multiWiiDevice.mw.MSP_PIDNAMES) {
+			} else if(msgCode ==multiWiiDevice.mw.MSP_SERVO_CONF) {
+			} else if(msgCode ==multiWiiDevice.mw.MSP_MISC) {
+				json.put("intPowerTrigger", multiWiiDevice.mw.intPowerTrigger);
+				json.put("minthrottle", multiWiiDevice.mw.minthrottle);
+				json.put("maxthrottle", multiWiiDevice.mw.maxthrottle);
+				json.put("mincommand", multiWiiDevice.mw.mincommand);
+				json.put("failsafe_throttle", multiWiiDevice.mw.failsafe_throttle);
+				json.put("ArmCount", multiWiiDevice.mw.ArmCount);
+				json.put("LifeTime", multiWiiDevice.mw.LifeTime);
+				json.put("mag_decliniation", multiWiiDevice.mw.mag_decliniation);
+				json.put("vbatscale", multiWiiDevice.mw.vbatscale);
+				json.put("vbatlevel_warn1", multiWiiDevice.mw.vbatlevel_warn1);
+				json.put("vbatlevel_warn2", multiWiiDevice.mw.vbatlevel_warn2);
+				json.put("vbatlevel_crit", multiWiiDevice.mw.vbatlevel_crit);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_MOTOR_PINS) {
+				for (i = 0; i < 8; i++) {
+					json.put("byteMP" + i, multiWiiDevice.mw.byteMP[i]);
+				}
+			} else if(msgCode ==multiWiiDevice.mw.MSP_DEBUG) {
+				json.put("debug1", multiWiiDevice.mw.debug1);
+				json.put("debug2", multiWiiDevice.mw.debug2);
+				json.put("debug3", multiWiiDevice.mw.debug3);
+				json.put("debug4", multiWiiDevice.mw.debug4);
+			} else if(msgCode ==multiWiiDevice.mw.MSP_DEBUGMSG) {					
+			} else if(msgCode ==multiWiiDevice.mw.MSP_WP) {
+			} else if(msgCode ==multiWiiDevice.mw.MSP_NAV_CONFIG) {
+				json.put("NAVmaxWpNumber", multiWiiDevice.mw.NAVmaxWpNumber);				
+			} else if(msgCode ==multiWiiDevice.mw.MSP_NAV_STATUS) {
+				json.put("NAVGPSMode", multiWiiDevice.mw.NAVGPSMode);
+				json.put("NAVstate", multiWiiDevice.mw.NAVstate);
+				json.put("NAVcurrentAction", multiWiiDevice.mw.NAVcurrentAction);
+				json.put("NAVcurrentWPNumber", multiWiiDevice.mw.NAVcurrentWPNumber);
+				json.put("NAVerror", multiWiiDevice.mw.NAVerror);
+				json.put("NAVoriginalAltitude", multiWiiDevice.mw.NAVoriginalAltitude);
+				json.put("NAVtargetAltitude", multiWiiDevice.mw.NAVtargetAltitude);
+				json.put("NAValtToHold", multiWiiDevice.mw.NAValtToHold);
+				json.put("NAValtChangeFlag", multiWiiDevice.mw.NAValtChangeFlag);
+			}					
             return true;
 
         } else 
