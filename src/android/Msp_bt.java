@@ -134,7 +134,6 @@ public class Msp_bt extends CordovaPlugin {
 				json.put("ang_x", multiWiiDevice.mw.ang_x);
 				json.put("attitude_y", multiWiiDevice.mw.ang_y);
 				json.put("heading", multiWiiDevice.mw.head);
-				callbackContext.success(json);
 				// another way, only needed for async stuff??
 				//				PluginResult result = new PluginResult(PluginResult.Status.OK, json);
 				//				result.setKeepCallback(true);
@@ -209,7 +208,8 @@ public class Msp_bt extends CordovaPlugin {
 				json.put("NAVtargetAltitude", multiWiiDevice.mw.NAVtargetAltitude);
 				json.put("NAValtToHold", multiWiiDevice.mw.NAValtToHold);
 				json.put("NAValtChangeFlag", multiWiiDevice.mw.NAValtChangeFlag);
-			}					
+			}	
+			callbackContext.success(json);
             return true;
 
         } else 
