@@ -140,7 +140,7 @@ public abstract class MultirotorData {
 
 	public int GPS_distanceToHome, GPS_directionToHome;
 	public int GPS_numSat, GPS_fix, GPS_update;
-	public int GPS_altitude, GPS_speed, GPS_latitude, GPS_longitude, GPS_ground_course;
+	public float GPS_altitude, GPS_speed, GPS_latitude, GPS_longitude, GPS_ground_course;
 	public Waypoint[] Waypoints = { new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint(), new Waypoint() };
 //	public List<WaypointNav> WaypointsList = new ArrayList<WaypointNav>();
 	public int NAVmaxWpNumber = 0;
