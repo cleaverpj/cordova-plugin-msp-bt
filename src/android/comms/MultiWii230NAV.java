@@ -270,8 +270,8 @@ public class MultiWii230NAV extends MultirotorData {
 			case MSP_RAW_GPS:
 				GPS_fix = read8();
 				GPS_numSat = read8();
-				GPS_latitude = read32() / 1000000;
-				GPS_longitude = read32() / 1000000;
+				GPS_latitude = read32() / (float)1000000;
+				GPS_longitude = read32() / (float)1000000;
 				GPS_altitude = read16();
 				GPS_speed = read16();
 				GPS_ground_course = read16();
