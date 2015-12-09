@@ -176,18 +176,6 @@ public class MultiWii230NAV extends MultirotorData {
 				if ((multiCapability & 0x80000000) > 0)
 					multi_Capability.ByMis = true;
 
-	 //           App.wsServer.sendToAll("{\"id\":" + MSP_IDENT
-	 //                   + ",\"version\":" + version
-	 //                   + ",\"multiType\":" + multiType
-	 //                   + ",\"MSPversion\":" + MSPversion
-	 //                   + ",\"multiCapability\":" + multiCapability
-	 //                   + "}");
-
-	 //           App.deviceStateRef.child("identity").child("version").setValue(version);
-	 //           App.deviceStateRef.child("identity").child("multiType").setValue(multiType);
-	 //           App.deviceStateRef.child("identity").child("MSPversion").setValue(MSPversion);
-	 //           App.deviceStateRef.child("identity").child("multiCapability").setValue(multiCapability);
-
 				break;
 
 			case MSP_STATUS:
@@ -229,28 +217,7 @@ public class MultiWii230NAV extends MultirotorData {
 						ActiveModes[i] = false;
 
 				}
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_STATUS
-	 //                   + ",\"cycleTime\":" + cycleTime
-	 //                   + ",\"i2cError\":" + i2cError
-	 //                   + ",\"mode\":" + mode
-	 //                   + ",\"confSetting\":" + confSetting
-	 //                   + ",\"AccPresent\":" + AccPresent
-	 //                   + ",\"BaroPresent\":" + BaroPresent
-	 //                   + ",\"MagPresent\":" + MagPresent
-	 //                   + ",\"GPSPresent\":" + GPSPresent
-	 //                   + ",\"SonarPresent\":" + SonarPresent
-	 //                   + "}");
 
-	  /*          App.deviceStateRef.child("status").child("MSP_STATUS").setValue(MSP_STATUS);
-				App.deviceStateRef.child("status").child("cycleTime").setValue(cycleTime);
-				App.deviceStateRef.child("status").child("i2cError").setValue(i2cError);
-				App.deviceStateRef.child("status").child("confSetting").setValue(confSetting);
-				App.deviceStateRef.child("status").child("AccPresent").setValue(AccPresent);
-				App.deviceStateRef.child("status").child("BaroPresent").setValue(BaroPresent);
-				App.deviceStateRef.child("status").child("MagPresent").setValue(MagPresent);
-				App.deviceStateRef.child("status").child("GPSPresent").setValue(GPSPresent);
-				App.deviceStateRef.child("status").child("SonarPresent").setValue(SonarPresent);
-	*/
 				break;
 			case MSP_RAW_IMU:
 
@@ -265,19 +232,6 @@ public class MultiWii230NAV extends MultirotorData {
 				magx = read16() / 3;
 				magy = read16() / 3;
 				magz = read16() / 3;
-	   //         App.wsServer.sendToAll("{\"id\":" + MSP_RAW_IMU + ",\"ax\":" + ax + ",\"ay\":" + ay + ",\"az\":" + az + ",\"gx\":" + gx + ",\"gy\":" + gy + ",\"gz\":" + gz + ",\"magx\":" + magx + ",\"magy\":" + magy + ",\"magz\":" + magz + "}");
-
-				
-
-				Log.i("nav", "acc x:" + ax);
-				// App.deviceStateRef.child("imu").child("gyro_x").setValue(gx);
-				// App.deviceStateRef.child("imu").child("gyro_y").setValue(gy);
-				// App.deviceStateRef.child("imu").child("gyro_z").setValue(gz);
-
-				// App.deviceStateRef.child("imu").child("magnetometer_x").setValue(magx);
-				// App.deviceStateRef.child("imu").child("magnetometer_y").setValue(magy);
-				// App.deviceStateRef.child("imu").child("magnetometer_z").setValue(magz);
-
 
 				break;
 
@@ -286,16 +240,13 @@ public class MultiWii230NAV extends MultirotorData {
 				for (i = 0; i < 8; i++) {
 					servo[i] = read16();
 					msg += ",\"servo" + i + "\":" + servo[i];
-	//                App.deviceStateRef.child("servos").child(Integer.toString(i)).setValue(servo[i]);
 				}
-		 //       App.wsServer.sendToAll(msg + "}");
 				break;
 			case MSP_MOTOR:
 				msg = "{\"id\":" + MSP_MOTOR;
 				for (i = 0; i < 8; i++) {
 					mot[i] = read16();
 					msg += ",\"motor" + i + "\":" + mot[i];
-	//                App.deviceStateRef.child("motors").child(Integer.toString(i)).setValue(mot[i]);
 				}
 				if (multiType == SINGLECOPTER)
 					servo[7] = mot[0];
@@ -303,7 +254,6 @@ public class MultiWii230NAV extends MultirotorData {
 					servo[7] = mot[0];
 					servo[6] = mot[1];
 				}
-	//            App.wsServer.sendToAll(msg + "}");
 
 				break;
 			case MSP_RC:
@@ -315,23 +265,6 @@ public class MultiWii230NAV extends MultirotorData {
 				rcAUX2 = read16();
 				rcAUX3 = read16();
 				rcAUX4 = read16();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_RC
-	//                    + ",\"rcRoll\":" + rcRoll
-	//                    + ",\"rcPitch\":" + rcPitch
-	//                    + ",\"rcYaw\":" + rcYaw
-	//                    + ",\"rcThrottle\":" + rcThrottle
-	//                    + ",\"rcAUX1\":" + rcAUX1
-	//                    + ",\"rcAUX2\":" + rcAUX2
-	//                    + ",\"rcAUX3\":" + rcAUX3
-	//                    + ",\"rcAUX4\":" + rcAUX4
-	 //                   + "}");
-
-	/*
-				App.deviceStateRef.child("rc").child("roll").setValue(rcRoll);
-				App.deviceStateRef.child("rc").child("pitch").setValue(rcPitch);
-				App.deviceStateRef.child("rc").child("throttle").setValue(rcThrottle);
-				App.deviceStateRef.child("rc").child("yaw").setValue(rcYaw);
-	*/
 
 				break;
 			case MSP_RAW_GPS:
@@ -342,81 +275,23 @@ public class MultiWii230NAV extends MultirotorData {
 				GPS_altitude = read16();
 				GPS_speed = read16();
 				GPS_ground_course = read16();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_RAW_GPS
-	//                    + ",\"GPS_fix\":" + GPS_fix
-	//                    + ",\"GPS_numSat\":" + GPS_numSat
-	//                    + ",\"GPS_latitude\":" + GPS_latitude
-	//                    + ",\"GPS_longitude\":" + GPS_longitude
-	 //                   + ",\"GPS_altitude\":" + GPS_altitude
-	 //                   + ",\"GPS_speed\":" + GPS_speed
-	 //                   + ",\"GPS_ground_course\":" + GPS_ground_course
-	 //                   + "}");
-
-	/*
-				App.deviceStateRef.child("gps").child("number_satellites").setValue(GPS_numSat);
-				App.deviceStateRef.child("gps").child("fix").setValue(GPS_fix);
-				App.deviceStateRef.child("gps").child("longitude").setValue(GPS_longitude);
-				App.deviceStateRef.child("gps").child("latitude").setValue(GPS_latitude);
-				App.deviceStateRef.child("gps").child("altitude").setValue(GPS_altitude);
-				App.deviceStateRef.child("gps").child("speed").setValue(GPS_speed);
-				App.deviceStateRef.child("gps").child("heading").setValue(GPS_ground_course);
-	*/
 
 				break;
 			case MSP_COMP_GPS:
 				GPS_distanceToHome = read16();
 				GPS_directionToHome = read16();
 				GPS_update = read8();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_COMP_GPS
-	//                    + ",\"GPS_distanceToHome\":" + GPS_distanceToHome
-	//                    + ",\"GPS_directionToHome\":" + GPS_directionToHome
-	//                    + ",\"GPS_update\":" + GPS_update
-	//                    + "}");
-
-	/*
-				App.deviceStateRef.child("gps").child("distance_to_home").setValue(GPS_distanceToHome);
-				App.deviceStateRef.child("gps").child("direction_to_home").setValue(GPS_directionToHome);
-				App.deviceStateRef.child("gps").child("update").setValue(GPS_update);
-	*/
 
 				break;
 			case MSP_ATTITUDE:
-			
-				
 				angx = read16() / 10;
 				angy = read16() / 10;
 				head = read16();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_ATTITUDE
-	//                    + ",\"angx\":" + angx
-	//                    + ",\"angy\":" + angy
-	//                    + ",\"head\":" + head
-	//                    + "}");
-
-	/*
-				App.deviceStateRef.child("attitude").child("x").setValue(angx);
-				App.deviceStateRef.child("attitude").child("y").setValue(angy);
-				App.deviceStateRef.child("attitude").child("heading").setValue(head);
-	*/
-
-//				Log.d("mw-request", "setting attitude in " + this);
-
-				this.attitude_x = angx;
-				this.attitude_y = angy;
-				this.attitude_z = head;
 
 				break;
 			case MSP_ALTITUDE:
 				alt = ((float) read32() / 100);
 				vario = read16();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_ALTITUDE
-	//                    + ",\"alt\":" + alt
-	//                    + ",\"vario\":" + vario
-	//                    + "}");
-
-	/*
-				App.deviceStateRef.child("barometer").child("altitude").setValue(alt);
-				App.deviceStateRef.child("barometer").child("vario").setValue(vario);
-	*/
 
 				break;
 			case MSP_ANALOG:
@@ -424,19 +299,6 @@ public class MultiWii230NAV extends MultirotorData {
 				pMeterSum = read16();
 				rssi = read16();
 				amperage = read16();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_ANALOG
-	//                    + ",\"bytevbat\":" + bytevbat
-	//                    + ",\"pMeterSum\":" + pMeterSum
-	//                    + ",\"rssi\":" + rssi
-	//                    + ",\"amperage\":" + amperage
-	//                    + "}");
-
-	/*
-				App.deviceStateRef.child("analog").child("battery_voltage").setValue(bytevbat);
-				App.deviceStateRef.child("analog").child("pMeterSum").setValue(pMeterSum);
-				App.deviceStateRef.child("analog").child("rssi").setValue(rssi);
-				App.deviceStateRef.child("analog").child("amperage").setValue(amperage);
-	*/
 
 				break;
 			case MSP_RC_TUNING:
@@ -447,25 +309,6 @@ public class MultiWii230NAV extends MultirotorData {
 				byteDynThrPID = read8();
 				byteThrottle_MID = read8();
 				byteThrottle_EXPO = read8();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_RC_TUNING
-	//                    + ",\"RC_RATE\":" + byteRC_RATE
-	//                    + ",\"RC_EXPO\":" + byteRC_EXPO
-	//                    + ",\"RollPitchRate\":" + byteRollPitchRate
-	//                    + ",\"YawRate\":" + byteYawRate
-	//                    + ",\"DynThrPID\":" + byteDynThrPID
-	//                    + ",\"Throttle_MID\":" + byteThrottle_MID
-	//                    + ",\"Throttle_EXPO\":" + byteThrottle_EXPO
-	//                    + "}");
-
-	/*
-				App.deviceStateRef.child("rc_tuning").child("rssi").setValue(byteRC_RATE);
-				App.deviceStateRef.child("rc_tuning").child("exponential").setValue(byteRC_EXPO);
-				App.deviceStateRef.child("rc_tuning").child("roll_pitch_rate").setValue(byteRollPitchRate);
-				App.deviceStateRef.child("rc_tuning").child("yaw_rate").setValue(byteYawRate);
-				App.deviceStateRef.child("rc_tuning").child("dynamic_throttle_pid").setValue(byteDynThrPID);
-				App.deviceStateRef.child("rc_tuning").child("throttle_mid").setValue(byteThrottle_MID);
-				App.deviceStateRef.child("rc_tuning").child("throttle_exponential").setValue(byteThrottle_EXPO);
-	*/
 
 				break;
 			case MSP_ACC_CALIBRATION:
@@ -473,24 +316,13 @@ public class MultiWii230NAV extends MultirotorData {
 			case MSP_MAG_CALIBRATION:
 				break;
 			case MSP_PID:
-				msg = "{\"id\":" + MSP_PID;
 				for (i = 0; i < PIDITEMS; i++) {
 					byteP[i] = read8();
 					byteI[i] = read8();
 					byteD[i] = read8();
-					msg += ",\"P" + i + "\":" + byteP[i];
-					msg += ",\"I" + i + "\":" + byteI[i];
-					msg += ",\"D" + i + "\":" + byteD[i];
-	/*
-					App.deviceStateRef.child("pid").child("p" + i).setValue(byteP[i]);
-					App.deviceStateRef.child("pid").child("i" + i).setValue(byteI[i]);
-					App.deviceStateRef.child("pid").child("d" + i).setValue(byteD[i]);
-	*/
 				}
-	//            App.wsServer.sendToAll(msg + "}");
 				break;
 			case MSP_BOX:
-				msg = "{\"id\":" + MSP_BOX;
 				for (i = 0; i < CHECKBOXITEMS; i++) {
 					activation[i] = read16();
 					for (int aa = 0; aa < 12; aa++) {
@@ -498,30 +330,19 @@ public class MultiWii230NAV extends MultirotorData {
 							Checkbox[i][aa] = true;
 						else
 							Checkbox[i][aa] = false;
-						msg += ",\"CB" + i + "." + aa + "\":" + (Checkbox[i][aa] ? "true" : "false");
-	//                    App.deviceStateRef.child("checkboxes").child(Integer.toString(i)).child(Integer.toString(aa)).setValue(Checkbox[i][aa]);
 					}
 				}
-	//            App.wsServer.sendToAll(msg + "}");
 
 				break;
 			case MSP_BOXNAMES:
-	//            msg = "{\"id\":" + MSP_BOXNAMES;
 				BoxNames = new String(inBuf, 0, dataSize).split(";");
-				Log.d("aaa", new String(inBuf, 0, dataSize));
 				for (String s : BoxNames) {
-	//              msg += ",\"Boxname" + i + "\":" + s;
-					Log.d("aaa", s);
+					Log.d("boxname", s);
 				}
 				init();
 				break;
 			case MSP_PIDNAMES:
 				PIDNames = new String(inBuf, 0, dataSize).split(";");
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_PIDNAMES
-	//                    + ",\"angx\":" + angx
-	//                    + ",\"angy\":" + angy
-	//                    + ",\"head\":" + head
-	//                    + "}");
 				break;
 
 			case MSP_SERVO_CONF:
@@ -536,14 +357,7 @@ public class MultiWii230NAV extends MultirotorData {
 					msg += ",\"ServoMax" + i + "\":" + ServoConf[i].Max;
 					msg += ",\"ServoMid" + i + "\":" + ServoConf[i].MidPoint;
 					msg += ",\"ServoRate" + i + "\":" + ServoConf[i].Rate;
-	/*
-					App.deviceStateRef.child("servo_configuration").child(Integer.toString(i)).child("minimum").setValue(ServoConf[i].Min);
-					App.deviceStateRef.child("servo_configuration").child(Integer.toString(i)).child("maximum").setValue(ServoConf[i].Max);
-					App.deviceStateRef.child("servo_configuration").child(Integer.toString(i)).child("midpoint").setValue(ServoConf[i].MidPoint);
-					App.deviceStateRef.child("servo_configuration").child(Integer.toString(i)).child("rate").setValue(ServoConf[i].Rate);
-	*/
 				}
-	//            App.wsServer.sendToAll(msg + "}");
 				break;
 			case MSP_MISC:
 				intPowerTrigger = read16(); // a
@@ -562,62 +376,19 @@ public class MultiWii230NAV extends MultirotorData {
 				vbatlevel_crit = (float) (read8() / 10.0f);// l
 				if (ArmCount < 1)
 					Log_Permanent_Hidden = true;
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_MISC
-	//                    + ",\"intPowerTrigger\":" + intPowerTrigger
-	//                    + ",\"minthrottle\":" + minthrottle
-	//                    + ",\"maxthrottle\":" + maxthrottle
-	//                    + ",\"mincommand\":" + mincommand
-	//                    + ",\"failsafe_throttle\":" + failsafe_throttle
-	//                    + ",\"ArmCount\":" + ArmCount
-	//                    + ",\"LifeTime\":" + LifeTime
-	//                    + ",\"mag_decliniation\":" + mag_decliniation
-	//                    + ",\"vbatscale\":" + vbatscale
-	//                    + ",\"vbatlevel_warn1\":" + vbatlevel_warn1
-	//                    + ",\"vbatlevel_warn2\":" + vbatlevel_warn2
-	//                    + ",\"vbatlevel_crit\":" + vbatlevel_crit
-	//                    + "}");
-
-	/*
-				App.deviceStateRef.child("miscellaneous").child("power_trigger").setValue(intPowerTrigger);
-				App.deviceStateRef.child("miscellaneous").child("minimum_throttle").setValue(minthrottle);
-				App.deviceStateRef.child("miscellaneous").child("maximum_throttle").setValue(maxthrottle);
-				App.deviceStateRef.child("miscellaneous").child("minimum_command").setValue(mincommand);
-				App.deviceStateRef.child("miscellaneous").child("failsafe_throttle").setValue(failsafe_throttle);
-				App.deviceStateRef.child("miscellaneous").child("arm_count").setValue(ArmCount);
-				App.deviceStateRef.child("miscellaneous").child("vbatscale").setValue(vbatscale);
-				App.deviceStateRef.child("miscellaneous").child("battery_warning_level_1").setValue(vbatlevel_warn1);
-				App.deviceStateRef.child("miscellaneous").child("battery_warning_level_2").setValue(vbatlevel_warn2);
-				App.deviceStateRef.child("miscellaneous").child("battery_warning_critical").setValue(vbatlevel_crit);
-	*/
 
 				break;
 
 			case MSP_MOTOR_PINS:
-				msg = "{\"id\":" + MSP_MOTOR_PINS;
 				for (i = 0; i < 8; i++) {
 					byteMP[i] = read8();
-					msg += ",\"byteMP" + i + "\":" + byteMP[i];
-	//                App.deviceStateRef.child("motor_pins").child(Integer.toString(i)).setValue(byteMP[i]);
 				}
-	  //          App.wsServer.sendToAll(msg + "}");
 				break;
 			case MSP_DEBUG:
 				debug1 = read16();
 				debug2 = read16();
 				debug3 = read16();
 				debug4 = read16();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_DEBUG
-	//                    + ",\"debug1\":" + debug1
-	//                    + ",\"debug2\":" + debug2
-	//                    + ",\"debug3\":" + debug3
-	//                    + ",\"debug4\":" + debug4
-	//                    + "}");
-	/*
-				App.deviceStateRef.child("debug").child("1").setValue(debug1);
-				App.deviceStateRef.child("debug").child("2").setValue(debug2);
-				App.deviceStateRef.child("debug").child("3").setValue(debug3);
-				App.deviceStateRef.child("debug").child("4").setValue(debug4);
-	*/
 
 				break;
 			case MSP_DEBUGMSG:
@@ -627,54 +398,13 @@ public class MultiWii230NAV extends MultirotorData {
 						DebugMSG += c;
 					}
 				}
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_DEBUGMSG
-	//                    + ",\"DebugMSG \":" + debug1
-	//                    + "}");
+
 				break;
 			case MSP_WP:
-	//			WaypointNav WP = new WaypointNav();
-	//			WP.Number = read8();
-	//			WP.Action = read8();
-	//			WP.Lat = read32();
-	//			WP.Lon = read32();
-	//			WP.Altitude = read32() / 100;
-	//			WP.Parameter1 = read16();
-	//			WP.Parameter2 = read16();
-	//			WP.Parameter3 = read16();
-	//			WP.Flag = read8();
-
-	//			WaypointsList.add(WP);
-
-	//			Log.d("nav", "MSP_WP (get) " + String.valueOf(WP.Number) + "  " + String.valueOf(WP.Lat) + "x" + String.valueOf(WP.Lon) + " A" + String.valueOf(WP.Action) + " F" + String.valueOf(WP.Flag));
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_WP
-	//                    + ",\"Number\":" + WP.Number
-	//                    + ",\"Action\":" + WP.Action
-	//                    + ",\"Lat\":" + WP.Lat
-	 //                   + ",\"Lon\":" + WP.Lon
-	//                    + ",\"Altitude\":" + WP.Altitude
-	//                    + ",\"Parameter1\":" + WP.Parameter1
-	//                    + ",\"Parameter2\":" + WP.Parameter2
-	//                    + ",\"Parameter3\":" + WP.Parameter3
-	//                    + "}");
-
-	//            App.deviceStateRef.child("waypoints").child(Integer.toString(WP.Number)).child("action").setValue(WP.Action);
-	//            App.deviceStateRef.child("waypoints").child(Integer.toString(WP.Number)).child("latitude").setValue(WP.Lat);
-	//            App.deviceStateRef.child("waypoints").child(Integer.toString(WP.Number)).child("longitude").setValue(WP.Lon);
-	//            App.deviceStateRef.child("waypoints").child(Integer.toString(WP.Number)).child("altitude").setValue(WP.Altitude);
-	//            App.deviceStateRef.child("waypoints").child(Integer.toString(WP.Number)).child("parameter_1").setValue(WP.Parameter1);
-	//            App.deviceStateRef.child("waypoints").child(Integer.toString(WP.Number)).child("parameter_2").setValue(WP.Parameter2);
-	//            App.deviceStateRef.child("waypoints").child(Integer.toString(WP.Number)).child("parameter_3").setValue(WP.Parameter3);
-	//            App.deviceStateRef.child("waypoints").child(Integer.toString(WP.Number)).child("parameter_4").setValue(WP.Flag);
-
 				break;
 
 			case MSP_NAV_CONFIG:
 				NAVmaxWpNumber = read8();
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_NAV_CONFIG
-	//                    + ",\"NAVmaxWpNumber\":" + NAVmaxWpNumber
-	//                    + "}");
-
-	//            App.deviceStateRef.child("waypoints").child("total").setValue(NAVmaxWpNumber);
 
 				break;
 
@@ -690,28 +420,6 @@ public class MultiWii230NAV extends MultirotorData {
 				NAValtToHold = read32();// serialize32(alt_to_hold);
 				NAValtChangeFlag = read8();// serialize8(alt_change_flag);
 
-	//            App.wsServer.sendToAll("{\"id\":" + MSP_NAV_STATUS
-	//                + ",\"NAVGPSMode\":" + NAVGPSMode
-	//                + ",\"NAVstate\":" + NAVstate
-	 //               + ",\"NAVcurrentAction\":" + NAVcurrentAction
-	//                + ",\"NAVcurrentWPNumber\":" + NAVcurrentWPNumber
-	//                + ",\"NAVerror\":" + NAVerror
-	//                + ",\"NAVoriginalAltitude\":" + NAVoriginalAltitude
-	//                + ",\"NAVtargetAltitude\":" + NAVtargetAltitude
-	//                + ",\"NAValtToHold\":" + NAValtToHold
-	//                + ",\"NAValtChangeFlag\":" + NAValtChangeFlag
-	//                + "}");
-
-	  /*          App.deviceStateRef.child("navigation_status").child("mode").setValue(NAVGPSMode);
-				App.deviceStateRef.child("navigation_status").child("state").setValue(NAVstate);
-				App.deviceStateRef.child("navigation_status").child("current_action").setValue(NAVcurrentAction);
-				App.deviceStateRef.child("navigation_status").child("current_waypoint").setValue(NAVcurrentWPNumber);
-				App.deviceStateRef.child("navigation_status").child("error").setValue(NAVerror);
-				App.deviceStateRef.child("navigation_status").child("original_altitude").setValue(NAVoriginalAltitude);
-				App.deviceStateRef.child("navigation_status").child("target_altitude").setValue(NAVtargetAltitude);
-				App.deviceStateRef.child("navigation_status").child("altitude_to_hold").setValue(NAValtToHold);
-				App.deviceStateRef.child("navigation_status").child("altitude_change_flag").setValue(NAValtChangeFlag);
-	*/
 				break;
 
 
