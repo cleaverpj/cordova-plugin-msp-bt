@@ -40,6 +40,7 @@
     <source-file src="src/android/comms/ServoConfClass.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
     <source-file src="src/android/comms/SimpleQueue.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
     <source-file src="src/android/comms/Waypoint.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
+    <source-file src="src/android/comms/WaypointNav.java" target-dir="src/enterprises/nucleus/plugins/multiwii_bluetooth/comms"/>
 		
   </platform>
 
