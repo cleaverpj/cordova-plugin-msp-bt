@@ -64,7 +64,7 @@ public class MultiWii230NAV extends MultirotorData {
 
     int[] requests = new int[] { 0, MSP_ATTITUDE  };
     final int[] requestsOnce = new int[] { MSP_IDENT, MSP_BOXNAMES, MSP_PID, MSP_BOX, MSP_MISC, MSP_NAV_CONFIG };
-    int[] requestsPeriodical = new int[] { MSP_ATTITUDE, MSP_RC};
+    int[] requestsPeriodical = new int[] { MSP_ATTITUDE, MSP_RAW_GPS, MSP_RC};
 //    int[] requestsPeriodical = new int[] { MSP_ALTITUDE, MSP_RAW_GPS, MSP_BOX, MSP_RAW_IMU, MSP_STATUS, MSP_COMP_GPS, MSP_ANALOG, MSP_SERVO, MSP_MOTOR, MSP_RC, MSP_DEBUG };
 
     public void SendRequest2() {
