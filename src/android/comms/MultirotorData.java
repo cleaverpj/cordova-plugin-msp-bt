@@ -175,7 +175,7 @@ public abstract class MultirotorData {
 
 	public boolean[] ActiveModes = new boolean[CHECKBOXITEMS];
 	public Boolean[][] Checkbox = new Boolean[CHECKBOXITEMS][12]; // state of
-																	// chexboxes
+									 								// chexboxes
 
 	public int byteMP[] = new int[8]; // Motor // Pins. // Varies // by // multiType //
 								// and // Arduino // model // (pro // Mini, //
