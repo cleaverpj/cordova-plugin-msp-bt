@@ -22,9 +22,21 @@ module.exports = {
     setHeading: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "setRC", [args]);
     },
+    setMode: function (args, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Msp_bt", "setMode", [args]);
+    },
+    setSensitivity: function (args, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Msp_bt", "setSensitivity", [args]);
+    },
     sendMessage: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "sendMessage", [args]);
     },
+	modes: {
+		MANUAL: 100,
+		STABILIZED: 101,
+		RETURN: 102,
+		HEADING_HOLD: 103
+	},
 	codes: {
 		MSP_IDENT: 100,
 		MSP_STATUS: 101,

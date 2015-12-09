@@ -87,6 +87,24 @@ public class Msp_bt extends CordovaPlugin {
  
             return true;
 
+        } else if (action.equals("setMode")) {
+            Log.i("msp_bt","setMode");
+            String msgCode = args.getString(0);
+            String message = "send message " + msgCode;
+			Log.i("msp_bt","TODO setMode");
+            callbackContext.success(message);
+ 
+            return true;
+
+        } else if (action.equals("setSensitivity")) {
+            Log.i("msp_bt","setSensitivity");
+            String msgCode = args.getString(0);
+            String message = "send message " + msgCode;
+			Log.i("msp_bt","TODO setSensitivity");
+            callbackContext.success(message);
+ 
+            return true;
+
         } else if (action.equals("getData")) {
             Log.i("msp_bt","sendMessage");
             int msgCode = Integer.parseInt(args.getString(0));
