@@ -60,6 +60,33 @@ public class Msp_bt extends CordovaPlugin {
  
             return true;
 
+        } else if (action.equals("setWaypoint")) {
+            Log.i("msp_bt","setWaypoints");
+            String msgCode = args.getString(0);
+            String message = "send message " + msgCode;
+			Log.i("msp_bt","TODO set waypoint");
+            callbackContext.success(message);
+ 
+            return true;
+
+        } else if (action.equals("setRC")) {
+            Log.i("msp_bt","setRC");
+            String msgCode = args.getString(0);
+            String message = "send message " + msgCode;
+			Log.i("msp_bt","TODO set RC");
+            callbackContext.success(message);
+ 
+            return true;
+
+        } else if (action.equals("setHeading")) {
+            Log.i("msp_bt","setHeading");
+            String msgCode = args.getString(0);
+            String message = "send message " + msgCode;
+			Log.i("msp_bt","TODO setHeading");
+            callbackContext.success(message);
+ 
+            return true;
+
         } else if (action.equals("getData")) {
             Log.i("msp_bt","sendMessage");
             int msgCode = Integer.parseInt(args.getString(0));

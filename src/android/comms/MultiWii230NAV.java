@@ -874,48 +874,43 @@ public class MultiWii230NAV extends MultirotorData {
 
 	}
 
-    @Override
-    public void SendRequestMSP_SET_WP_NAV(Waypoint w) {
+   @Override
+	public void SendRequestMSP_SET_WP_NAV(WaypointNav w) {
+		w.Altitude *= 100;
 
-    }
+		ArrayList<Character> payload = new ArrayList<Character>();
+		payload.add((char) w.Number);
+		payload.add((char) w.Action);
+		payload.add((char) (w.Lat & 0xFF));
+		payload.add((char) ((w.Lat >> 8) & 0xFF));
+		payload.add((char) ((w.Lat >> 16) & 0xFF));
+		payload.add((char) ((w.Lat >> 24) & 0xFF));
 
-//    @Override
-//	public void SendRequestMSP_SET_WP_NAV(WaypointNav w) {
-//		w.Altitude *= 100;
+		payload.add((char) (w.Lon & 0xFF));
+		payload.add((char) ((w.Lon >> 8) & 0xFF));
+		payload.add((char) ((w.Lon >> 16) & 0xFF));
+		payload.add((char) ((w.Lon >> 24) & 0xFF));
 
-//		ArrayList<Character> payload = new ArrayList<Character>();
-//		payload.add((char) w.Number);
-//		payload.add((char) w.Action);
-//		payload.add((char) (w.Lat & 0xFF));
-//		payload.add((char) ((w.Lat >> 8) & 0xFF));
-//		payload.add((char) ((w.Lat >> 16) & 0xFF));
-//		payload.add((char) ((w.Lat >> 24) & 0xFF));
+		payload.add((char) (w.Altitude & 0xFF));
+		payload.add((char) ((w.Altitude >> 8) & 0xFF));
+		payload.add((char) ((w.Altitude >> 16) & 0xFF));
+		payload.add((char) ((w.Altitude >> 24) & 0xFF));
 
-//		payload.add((char) (w.Lon & 0xFF));
-//		payload.add((char) ((w.Lon >> 8) & 0xFF));
-//		payload.add((char) ((w.Lon >> 16) & 0xFF));
-//		payload.add((char) ((w.Lon >> 24) & 0xFF));
+		payload.add((char) (w.Parameter1 & 0xFF));
+		payload.add((char) ((w.Parameter1 >> 8) & 0xFF));
 
-//		payload.add((char) (w.Altitude & 0xFF));
-//		payload.add((char) ((w.Altitude >> 8) & 0xFF));
-//		payload.add((char) ((w.Altitude >> 16) & 0xFF));
-//		payload.add((char) ((w.Altitude >> 24) & 0xFF));
+		payload.add((char) (w.Parameter2 & 0xFF));
+		payload.add((char) ((w.Parameter2 >> 8) & 0xFF));
 
-//		payload.add((char) (w.Parameter1 & 0xFF));
-//		payload.add((char) ((w.Parameter1 >> 8) & 0xFF));
+		payload.add((char) (w.Parameter3 & 0xFF));
+		payload.add((char) ((w.Parameter3 >> 8) & 0xFF));
 
-//		payload.add((char) (w.Parameter2 & 0xFF));
-//		payload.add((char) ((w.Parameter2 >> 8) & 0xFF));
+		payload.add((char) w.Flag);
 
-//		payload.add((char) (w.Parameter3 & 0xFF));
-//		payload.add((char) ((w.Parameter3 >> 8) & 0xFF));
+		sendRequestMSP(requestMSP(MSP_SET_WP, payload.toArray(new Character[payload.size()])));
 
-//		payload.add((char) w.Flag);
-
-//		sendRequestMSP(requestMSP(MSP_SET_WP, payload.toArray(new Character[payload.size()])));
-
-//		Log.d("nav", "MSP_SET_WP " + String.valueOf(w.Number) + "  " + String.valueOf(w.Lat) + "x" + String.valueOf(w.Lon) + " " + String.valueOf(w.Altitude) + " " + String.valueOf(w.Flag));
-//	}
+		Log.d("nav", "MSP_SET_WP " + String.valueOf(w.Number) + "  " + String.valueOf(w.Lat) + "x" + String.valueOf(w.Lon) + " " + String.valueOf(w.Altitude) + " " + String.valueOf(w.Flag));
+	}
 
 	@Override
 	public void SendRequestMSP(int MSPCommand) {

@@ -13,6 +13,15 @@ module.exports = {
     getData: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "getData", [args]);
     },
+    setWaypoints: function (args, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Msp_bt", "setWaypoints", [args]);
+    },
+    setRC: function (args, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Msp_bt", "setRC", [args]);
+    },
+    setHeading: function (args, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Msp_bt", "setRC", [args]);
+    },
     sendMessage: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "sendMessage", [args]);
     },
