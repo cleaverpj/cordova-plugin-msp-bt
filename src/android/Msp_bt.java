@@ -209,7 +209,7 @@ public class Msp_bt extends CordovaPlugin {
 				json.put("NAValtToHold", multiWiiDevice.mw.NAValtToHold);
 				json.put("NAValtChangeFlag", multiWiiDevice.mw.NAValtChangeFlag);
 			}	
-			callbackContext.success(json);
+			callbackContext.success(json); 
             return true;
 
         } else 
