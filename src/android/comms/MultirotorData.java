@@ -25,7 +25,7 @@ import java.util.Date;
 
 public abstract class MultirotorData {
 
-	public float attitude_x, attitude_y, attitude_z;
+	public float ang_x, ang_y, ang_z;
 
 	/******************************* Multiwii Serial Protocol **********************/
 	final String MSP_HEADER = "$M<";
