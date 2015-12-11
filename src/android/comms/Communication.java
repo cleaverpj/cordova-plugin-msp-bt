@@ -59,8 +59,6 @@ public abstract class Communication {
 		this.context = context;
 	}
 
-
-
     public void SetHandler(Handler handler) {
 		mHandler = handler;
 		Log.d("ccc", "Communication Got Handler. SetHandler()");
