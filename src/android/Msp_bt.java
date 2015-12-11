@@ -47,6 +47,8 @@ public class Msp_bt extends CordovaPlugin {
             Log.i("msp_bt","disconnect");
             String deviceId = args.getString(0);
             String message = "disconnect " + deviceId;
+			mHandler.removeCallbacks(update);
+			
             callbackContext.success(message);
 
             return true;

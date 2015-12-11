@@ -24,7 +24,7 @@ import java.util.List;
 
 //import com.ezio.multiwii.waypoints.Waypoint;
 //import communication.Communication;
-
+ 
 public class MultiWii230NAV extends MultirotorData {
 
 	public MultiWii230NAV(Communication bt) {
