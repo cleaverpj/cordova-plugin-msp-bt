@@ -25,6 +25,9 @@ module.exports = {
     setMode: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "setMode", [args]);
     },
+    setOptionalMode: function (args, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Msp_bt", "setOptionalMode", [args]);
+    },
     setSensitivity: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "setSensitivity", [args]);
     },
@@ -32,10 +35,19 @@ module.exports = {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "sendMessage", [args]);
     },
 	modes: {
-		MANUAL: 100,
-		STABILIZED: 101,
-		RETURN: 102,
-		HEADING_HOLD: 103
+		ACRO: 100, //default
+		ANGLE: 101, //holds vehicle at position of sticks, idiot mode
+		HORIZON: 102 //RATE mode, rate of turn depends on position of sticks
+	},
+	optional_modes: {
+		BARO: 200, //altitude hold
+		MAG: 201, // heading lock, idiot mode
+		HEADFREE: 202, //holds the orientation (yaw) of the multi and will always move in the same 2D direction for the same ROLL/PITCH stick movement. probably idiot mode
+		HEADADJ: 203, //Sets a new yaw origin for HEADFREE mode.
+
+		// GPS MODES - Activation of MAG MODE has no effect in GPS MODE.
+		GPSHOME: 301,
+		GPSHOLD: 302
 	},
 	codes: {
 		MSP_IDENT: 100,

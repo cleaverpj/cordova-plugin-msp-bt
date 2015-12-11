@@ -835,7 +835,6 @@ public class MultiWii230NAV extends MultirotorData {
 		payload.add((char) ((heading >> 8) & 0xFF));
 		sendRequestMSP(requestMSP(MSP_SET_HEAD, payload.toArray(new Character[payload.size()])));
 		Log.d("aaa", "MSP_SET_HEAD " + String.valueOf(heading));
-
 	}
 
 	@Override
@@ -855,7 +854,6 @@ public class MultiWii230NAV extends MultirotorData {
 		// SendRequest1();
 		if (MainRequestMethod == 2)
 			SendRequest2();
-
 	}
 
 	@Override
