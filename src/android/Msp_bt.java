@@ -93,7 +93,7 @@ public class Msp_bt extends CordovaPlugin {
             Integer armCode = Integer.parseInt(args.getString(0));
 			if (armCode == 
             String message = "setting Arm:" + b;
-			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{,,,,b,,,});
+			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{null,null,null,null,b,null,null,null});
             callbackContext.success(message);
  
             return true;
