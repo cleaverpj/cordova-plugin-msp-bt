@@ -17,6 +17,8 @@ public class Msp_bt extends CordovaPlugin {
 
 	public static EZGUI multiWiiDevice;
 	
+	private final int DISARM = 100, ARM = 101;
+	
     @Override
     public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
 
@@ -83,6 +85,15 @@ public class Msp_bt extends CordovaPlugin {
             Integer ch8 = Integer.parseInt(args.getString(7));
             String message = "setting RC:" + args.getString(0) + ", " + args.getString(1) + ", " + args.getString(2) + ", " + args.getString(3) + ", " + args.getString(4) + ", " + args.getString(5) + ", " + args.getString(6) + ", " + args.getString(7);
 			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{ch1,ch2,ch3,ch4,ch5,ch6,ch7,ch8});
+            callbackContext.success(message);
+ 
+            return true;
+
+        } else if (action.equals("setArm")) {
+            Integer armCode = Integer.parseInt(args.getString(0));
+			if (armCode == 
+            String message = "setting Arm:" + b;
+			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{,,,,b,,,});
             callbackContext.success(message);
  
             return true;

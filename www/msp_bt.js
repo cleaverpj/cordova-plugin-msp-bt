@@ -52,6 +52,10 @@ module.exports = {
 		GPSHOME: 301,
 		GPSHOLD: 302
 	},
+	arm_codes: {
+		 DISARM: 100, 
+		 ARM: 101
+	},
 	codes: {
 		MSP_IDENT: 100,
 		MSP_STATUS: 101,
