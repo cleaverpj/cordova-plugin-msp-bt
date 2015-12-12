@@ -20,7 +20,7 @@ module.exports = {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "setRC", args);
     },
     setArm: function (args, successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "Msp_bt", "setArm", args);
+        cordova.exec(successCallback, errorCallback, "Msp_bt", "setArm", [args]);
     },
     setHeading: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "setRC", [args]);
