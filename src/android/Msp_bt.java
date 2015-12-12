@@ -97,7 +97,7 @@ public class Msp_bt extends CordovaPlugin {
 			if (armCode == ARM) {
 				arm = true;
 				message = "Arming";
-			} else
+			} else {
 				message = "DisArming";
 			}
 			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{null,null,null,null,arm ? ARMPWM : DISARMPWM,null,null,null});
