@@ -17,7 +17,7 @@ module.exports = {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "setWaypoints", [args]);
     },
     setRC: function (args, successCallback, errorCallback) {
-        cordova.exec(successCallback, errorCallback, "Msp_bt", "setRC", args);
+        cordova.exec(successCallback, errorCallback, "Msp_bt", "setRC", args); //note missing [] as args is a list already
     },
     setArm: function (args, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "Msp_bt", "setArm", [args]);

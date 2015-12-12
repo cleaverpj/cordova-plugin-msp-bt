@@ -94,6 +94,7 @@ public class Msp_bt extends CordovaPlugin {
 
         } else if (action.equals("setArm")) {
 			Log.i("msp_bt", "setArm");
+			Log.i("msp_bt", "ch1:" + ch1);
 			Integer armCode = Integer.parseInt(args.getString(0));
 			String message;
 			if (armCode == ARM) {
