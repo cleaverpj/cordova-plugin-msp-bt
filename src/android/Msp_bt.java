@@ -16,7 +16,8 @@ public class Msp_bt extends CordovaPlugin {
 	private static boolean killme;
 
 	public static EZGUI multiWiiDevice;
-	
+
+	private int ch1 = 1500, ch2 = 1500, ch3 = 1500, ch4 = 1500, ch5 = 1500, ch6 = 1500, ch7 = 1500, ch8 = 1500;
 	private final int DISARM = 100, ARM = 101;
 	private final int DISARMPWM = 1500, ARMPWM = 1000; 
 	
@@ -76,14 +77,15 @@ public class Msp_bt extends CordovaPlugin {
 
         } else if (action.equals("setRC")) {
             Log.i("msp_bt","setRC");
-            Integer ch1 = Integer.parseInt(args.getString(0));
-            Integer ch2 = Integer.parseInt(args.getString(1));
-            Integer ch3 = Integer.parseInt(args.getString(2));
-            Integer ch4 = Integer.parseInt(args.getString(3));
-            Integer ch5 = Integer.parseInt(args.getString(4));
-            Integer ch6 = Integer.parseInt(args.getString(5));
-            Integer ch7 = Integer.parseInt(args.getString(6));
-            Integer ch8 = Integer.parseInt(args.getString(7));
+            ch1 = Integer.parseInt(args.getString(0));
+            ch2 = Integer.parseInt(args.getString(1));
+            ch3 = Integer.parseInt(args.getString(2));
+            ch4 = Integer.parseInt(args.getString(3));
+            ch5 = Integer.parseInt(args.getString(4));
+            ch6 = Integer.parseInt(args.getString(5));
+            ch7 = Integer.parseInt(args.getString(6));
+            ch8 = Integer.parseInt(args.getString(7));
+	
             String message = "setting RC:" + args.getString(0) + ", " + args.getString(1) + ", " + args.getString(2) + ", " + args.getString(3) + ", " + args.getString(4) + ", " + args.getString(5) + ", " + args.getString(6) + ", " + args.getString(7);
 			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{ch1,ch2,ch3,ch4,ch5,ch6,ch7,ch8});
             callbackContext.success(message);
@@ -100,7 +102,7 @@ public class Msp_bt extends CordovaPlugin {
 			} else {
 				message = "DisArming";
 			}
-			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{null,null,null,null,arm ? ARMPWM : DISARMPWM,null,null,null});
+//			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{null,null,null,null,arm ? ARMPWM : DISARMPWM,null,null,null});
             callbackContext.success(message);
  
             return true;
