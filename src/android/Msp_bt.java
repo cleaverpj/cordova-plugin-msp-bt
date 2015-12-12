@@ -73,7 +73,7 @@ public class Msp_bt extends CordovaPlugin {
 
         } else if (action.equals("setRC")) {
             Log.i("msp_bt","setRC");
-            Integer ch1 = Integer.parseInt(args.getInteger(0));
+            Integer ch1 = Integer.parseInt(args.getString(0));
             Integer ch2 = Integer.parseInt(args.getString(1));
             Integer ch3 = Integer.parseInt(args.getString(2));
             Integer ch4 = Integer.parseInt(args.getString(3));
