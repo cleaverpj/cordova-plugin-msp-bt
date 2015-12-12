@@ -95,14 +95,14 @@ public class Msp_bt extends CordovaPlugin {
         } else if (action.equals("setArm")) {
             Integer armCode = Integer.parseInt(args.getString(0));
 			String message;
-			Boolean arm = false;
 			if (armCode == ARM) {
-				arm = true;
 				message = "Arming";
-			} else {
+				multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{ch1,ch2,ch3,ch4,ARMPWM,ch6,ch7,ch8});
+			} else if (armCode == DISARM) {
 				message = "DisArming";
-			}
-//			multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{null,null,null,null,arm ? ARMPWM : DISARMPWM,null,null,null});
+				multiWiiDevice.mw.SendRequestMSP_SET_RAW_RC(new int[]{ch1,ch2,ch3,ch4,DISARMPWM,ch6,ch7,ch8});
+			} else 
+				message = "unknown arming code";
             callbackContext.success(message);
  
             return true;
